@@ -68,7 +68,7 @@ AI agents that work in parallel (up to 3 simultaneously):
 ### Docker-First (Always Included)
 - Dockerfiles for Next.js and FastAPI
 - docker-compose.yml templates
-- Multi-stage builds optimized for DocPloy
+- Multi-stage builds optimized for DokPloy
 
 ## 📦 Usage
 
