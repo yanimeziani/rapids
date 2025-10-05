@@ -17,7 +17,7 @@ npm install -g rapids-ai
 ```
 
 That's it! RAPIDS will automatically:
-- Install 10 autonomous AI agents globally
+- Install 11 autonomous AI agents globally
 - Configure 5 MCP servers (Context7, Filesystem, PostgreSQL, GitHub, Puppeteer)
 - Set up CLI helpers (`rapids-init`, `rapids-update`)
 - Display a beautiful installation progress UI
@@ -34,10 +34,10 @@ RAPIDS uses **Ink by Vadim Demedes** (the same framework powering Claude Code, G
 
 ## 🚀 What You Get (Globally)
 
-### 10 Autonomous Sub-Agents
+### 11 Autonomous Sub-Agents
 AI agents that work in parallel (up to 3 simultaneously):
 
-**Development Agents (9):**
+**Development Agents (10):**
 - **Feature Builder** - Complete features across mobile/web/backend
 - **Bug Hunter** - Find and fix bugs autonomously
 - **Code Searcher** - Deep code analysis (auto-activated)
@@ -47,6 +47,7 @@ AI agents that work in parallel (up to 3 simultaneously):
 - **DB Architect** - Database schema management
 - **Security Scanner** - Security audits
 - **Deployment Manager** - Automated deployments
+- **Design Master** - Material Design 3 expert for beautiful, accessible UIs
 
 **💰 THE MOST CRITICAL AGENT:**
 - **Marketing Strategist** - Revenue generation, user acquisition, GTM strategy, copywriting, pricing, growth hacking
@@ -97,7 +98,15 @@ Updates to the latest version while preserving your settings.
 
 ### Use in Claude Code
 
-All 10 agents are globally available:
+All 11 agents are globally available:
+
+**Launch Design Agent:**
+```
+Launch design-master agent to:
+- Create Material Design 3 color scheme from brand color #6442d6
+- Design accessible navigation (bottom nav, rail, drawer)
+- Generate responsive layouts with proper breakpoints
+```
 
 **Launch Marketing Agent:**
 ```
@@ -115,10 +124,10 @@ Launch marketing-strategist agent to:
 
 **Launch Parallel Agents:**
 ```
-Launch feature-builder + test-generator + marketing-strategist in parallel to:
-- Build authentication feature
-- Generate tests
-- Plan feature launch campaign
+Launch design-master + feature-builder + marketing-strategist in parallel to:
+- Design the UI (Material Design 3)
+- Build the feature implementation
+- Plan the feature launch campaign
 ```
 
 ## 🎯 Optimized For
@@ -141,11 +150,11 @@ Launch feature-builder + test-generator + marketing-strategist in parallel to:
 ## 🏗️ How It Works
 
 RAPIDS installs globally to:
-- **macOS**: `~/Library/Application Support/Claude/rapids/`
-- **Linux**: `~/.config/claude/rapids/`
+- **macOS**: `~/Library/Application Support/Claude/rapids/` → `~/.claude/`
+- **Linux**: `~/.config/claude/rapids/` → `~/.claude/`
 
 All your projects automatically have access to:
-- 10 AI agents
+- 11 AI agents (including Material Design 3 expert)
 - 5 MCP servers
 - Stack templates
 - Slash commands

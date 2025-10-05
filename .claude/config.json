@@ -60,6 +60,10 @@
     "marketing-strategist": {
       "type": "general-purpose",
       "description": "Generates revenue, acquires users, and scales the business"
+    },
+    "design-master": {
+      "type": "general-purpose",
+      "description": "Material Design 3 expert for creating beautiful, accessible, and adaptive UIs across mobile, web, and design systems"
     }
   }
 }
