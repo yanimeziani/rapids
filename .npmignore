@@ -1,0 +1,24 @@
+# Development files
+*.md
+!README.md
+.DS_Store
+*.log
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# Tests
+test/
+*.test.js
+
+# CI/CD
+.github/
+
+# Docs (except what's needed)
+docs/
+!.claude/

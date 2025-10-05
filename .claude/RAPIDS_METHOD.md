@@ -1,19 +1,19 @@
-# 🌊 RAPIDS Method v2.1
+# 🌊 RAPIDS Method v3.0
 
 **R**eusable **A**gent-**P**owered **I**ntelligence **D**evelopment **S**ystem
 
-> **Global** Claude Code configuration with beautiful Ink TUI for solo developers who ship fast and make money
+> **npm package** with beautiful Ink TUI for global Claude Code configuration
 
 ## 🎯 What is RAPIDS?
 
-RAPIDS is a **global installation** for Claude Code that transforms **ALL your projects** into AI-assisted development powerhouses.
+RAPIDS is an **npm package** that installs globally to transform **ALL your projects** into AI-assisted development powerhouses.
 
-**What's New in v2.1:**
-- 🎨 **Ink TUI**: Beautiful terminal UI by Vadim Demedes (used by Claude Code, GitHub Copilot)
-- 🚀 **Interactive Installation**: Progress bars, spinners, gradients, and real-time feedback
-- ✨ **Project Wizard**: Interactive project creation with stack presets
-- 📊 **Live Stats**: Real-time installation progress and metrics
-- 🎭 **BigText Logo**: Gradient RAPIDS branding in terminal
+**What's New in v3.0:**
+- 📦 **npm Package**: Install with one command: `npm install -g rapids-ai`
+- 🧹 **Hyper-Simple**: Removed all bash scripts - pure npm/Node.js
+- 🚀 **Auto-Install**: Runs automatically on `npm install -g`
+- 🎨 **Beautiful TUI**: Powered by Ink (same as Claude Code, GitHub Copilot)
+- ✨ **Zero Config**: Works immediately after installation
 
 **What Changed in v2.0:**
 - ✅ **Global Installation**: Install once, use everywhere
@@ -80,53 +80,35 @@ rapids-init-project <name>  # Create new project
 rapids-update               # Update RAPIDS
 ```
 
-## 📦 Installation (One-Time, 60 seconds)
+## 📦 Installation (One Command!)
 
-### Interactive TUI Installation (Recommended - Beautiful!)
+### npm Global Install (Recommended)
 
 ```bash
-# 1. Clone RAPIDS
-git clone https://github.com/yanimeziani/rapids.git
-cd rapids
-
-# 2. Run beautiful Ink TUI installer
-./install-tui.sh
-
-# Watch the magic:
-# ✓ Environment detection
-# ✓ RAPIDS configuration installation with live stats
-# ✓ MCP servers setup with progress (5/5)
-# ✓ CLI helpers creation
-# ✓ Shell configuration update
-# ✓ Installation verification
-
-# 3. Restart terminal
-
-# 4. Create projects interactively!
-node --import tsx/esm cli/init.js
-# Interactive wizard with:
-# - Project name input
-# - Stack preset selection (Full/Mobile/Web/Backend)
-# - Beautiful success screen
-
-# Or use CLI helper:
-rapids-init-project my-app
+npm install -g rapids-ai
 ```
+
+**That's it!** The package automatically:
+- ✅ Detects your environment (macOS/Linux)
+- ✅ Installs 10 AI agents globally
+- ✅ Configures 5 MCP servers
+- ✅ Creates CLI commands (`rapids`, `rapids-init`, `rapids-update`)
+- ✅ Shows beautiful installation progress with Ink TUI
 
 **What Gets Installed:**
 - 10 sub-agents → `~/Library/Application Support/Claude/rapids/` (macOS)
 - 5 MCP servers → Pre-configured and ready
-- CLI commands → Available in all terminals
+- CLI commands → `rapids`, `rapids-init`, `rapids-update`
 - Templates → Ready for any new project
-- **Ink TUI** → Beautiful terminal interface powered by React
 
-### Classic Bash Installation (Alternative)
+### Create Projects
 
 ```bash
-# For systems without Node.js 20+
-git clone https://github.com/yanimeziani/rapids.git
-cd rapids
-./install-global.sh
+# Interactive project wizard
+rapids-init
+
+# Or check for updates
+rapids-update
 ```
 
 ## 🎨 Customization
@@ -186,9 +168,9 @@ git diff .claude/
 
 | RAPIDS Version | Claude Code | Anthropic Model | Features | Status |
 |----------------|-------------|-----------------|----------|--------|
-| **v2.1** | Latest | Sonnet 4.5 | **Ink TUI** + Global + Marketing + MCPs | ✅ **Current** |
-| v2.0 | Latest | Sonnet 4.5 | Global install + Marketing + MCPs | ⚠️ Legacy |
-| v1.0 | Latest | Sonnet 4.5 | Per-project, 9 agents | ⚠️ Legacy |
+| **v3.0** | Latest | Sonnet 4.5 | **npm package** + Ink TUI + 10 agents | ✅ **Current** |
+| v2.1 | Latest | Sonnet 4.5 | Ink TUI + Global + Marketing | ⚠️ Legacy |
+| v2.0 | Latest | Sonnet 4.5 | Global install + Marketing | ⚠️ Legacy |
 
 ## 🏗️ Architecture
 
