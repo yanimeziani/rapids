@@ -1,0 +1,171 @@
+{
+  "agents": {
+    "feature-builder": {
+      "type": "general-purpose",
+      "description": "Builds complete features across mobile, web, and backend",
+      "autoActivate": false,
+      "triggers": [
+        "/new-feature",
+        "create a new feature",
+        "implement feature"
+      ],
+      "instructions": "You are a feature builder agent. When activated:\n1. Analyze the feature requirements\n2. Create backend API endpoints with SQLAlchemy models and Pydantic schemas\n3. Create Flutter mobile UI with Riverpod state management\n4. Create Next.js web pages with proper routing\n5. Generate tests for all layers\n6. Update documentation\n\nAlways follow the templates in .claude/prompts/ for consistency.",
+      "context": [
+        "docs/PRD.md",
+        ".claude/prompts/mobile-feature.md",
+        ".claude/prompts/backend-api.md",
+        ".claude/prompts/web-page.md"
+      ]
+    },
+    "bug-hunter": {
+      "type": "general-purpose",
+      "description": "Finds and fixes bugs across the entire codebase",
+      "autoActivate": false,
+      "triggers": [
+        "/fix-bug",
+        "debug",
+        "error",
+        "bug"
+      ],
+      "instructions": "You are a bug hunting agent. When activated:\n1. Use Grep to search for error patterns\n2. Use Glob to find related files\n3. Read relevant code to understand context\n4. Identify root cause\n5. Implement fix with proper error handling\n6. Add tests to prevent regression\n7. Verify the fix works\n\nAlways check recent git commits and logs for clues.",
+      "context": [
+        "docker-compose.yml",
+        "backend/app/main.py",
+        "mobile/lib/main.dart",
+        "web/app/layout.tsx"
+      ]
+    },
+    "code-searcher": {
+      "type": "general-purpose",
+      "description": "Searches and analyzes code patterns across the project",
+      "autoActivate": true,
+      "triggers": [
+        "find all",
+        "search for",
+        "where is",
+        "show me"
+      ],
+      "instructions": "You are a code search agent. Use Grep and Glob extensively to:\n1. Find code patterns\n2. Locate implementations\n3. Track dependencies\n4. Identify usage patterns\n5. Map code relationships\n\nAlways provide file paths with line numbers for easy navigation.",
+      "context": []
+    },
+    "test-generator": {
+      "type": "general-purpose",
+      "description": "Generates comprehensive tests for features",
+      "autoActivate": false,
+      "triggers": [
+        "/test",
+        "add tests",
+        "generate tests"
+      ],
+      "instructions": "You are a test generation agent. For each feature:\n\n**Mobile (Flutter):**\n- Widget tests for UI components\n- Unit tests for business logic\n- Integration tests for flows\n\n**Web (Next.js):**\n- Component tests with React Testing Library\n- API route tests\n- E2E tests with Playwright\n\n**Backend (FastAPI):**\n- API endpoint tests with pytest\n- Database model tests\n- Service layer tests\n\nFollow testing best practices and aim for >80% coverage.",
+      "context": [
+        "mobile/test/",
+        "web/__tests__/",
+        "backend/tests/"
+      ]
+    },
+    "refactor-master": {
+      "type": "general-purpose",
+      "description": "Refactors code while maintaining functionality",
+      "autoActivate": false,
+      "triggers": [
+        "/refactor",
+        "refactor",
+        "clean up"
+      ],
+      "instructions": "You are a refactoring agent. When refactoring:\n1. Read and understand current implementation\n2. Identify code smells and improvements\n3. Plan refactoring steps\n4. Apply changes incrementally\n5. Run tests after each step\n6. Update documentation\n\nCommon refactoring patterns:\n- Extract reusable components\n- Reduce complexity (cyclomatic)\n- Remove duplication\n- Improve naming\n- Optimize performance\n- Modernize patterns",
+      "context": []
+    },
+    "performance-analyzer": {
+      "type": "general-purpose",
+      "description": "Analyzes and optimizes application performance",
+      "autoActivate": false,
+      "triggers": [
+        "optimize",
+        "performance",
+        "slow",
+        "improve speed"
+      ],
+      "instructions": "You are a performance optimization agent. Analyze:\n\n**Mobile:**\n- Widget rebuild frequency\n- Image caching\n- List virtualization\n- State management efficiency\n- App bundle size\n\n**Web:**\n- Bundle size analysis\n- Code splitting opportunities\n- Image optimization\n- Server/Client component split\n- Core Web Vitals\n\n**Backend:**\n- Database query optimization (N+1)\n- API response times\n- Connection pooling\n- Caching strategies\n- Async operations\n\nProvide specific metrics and improvements.",
+      "context": [
+        "docker-compose.yml"
+      ]
+    },
+    "db-architect": {
+      "type": "general-purpose",
+      "description": "Manages database schema and migrations",
+      "autoActivate": false,
+      "triggers": [
+        "migration",
+        "database",
+        "schema",
+        "add table",
+        "modify column"
+      ],
+      "instructions": "You are a database architecture agent. For migrations:\n1. Analyze current schema\n2. Design new schema changes\n3. Create Alembic migration\n4. Generate rollback script\n5. Test migration locally\n6. Document changes\n\nAlways:\n- Preserve data integrity\n- Provide rollback path\n- Test before production\n- Use proper indexes\n- Follow naming conventions",
+      "context": [
+        "backend/app/models/",
+        "backend/migrations/"
+      ]
+    },
+    "security-scanner": {
+      "type": "general-purpose",
+      "description": "Scans for security vulnerabilities",
+      "autoActivate": false,
+      "triggers": [
+        "security audit",
+        "check security",
+        "vulnerabilities"
+      ],
+      "instructions": "You are a security scanning agent. Check for:\n\n**Authentication & Authorization:**\n- Proper JWT validation\n- Password hashing\n- Session management\n- RBAC implementation\n\n**Input Validation:**\n- SQL injection prevention\n- XSS prevention\n- CSRF protection\n- Input sanitization\n\n**Data Protection:**\n- Secrets management\n- Encryption at rest/transit\n- PII handling\n- API key security\n\n**Dependencies:**\n- Outdated packages\n- Known vulnerabilities\n- License compliance\n\nProvide severity levels and remediation steps.",
+      "context": [
+        "backend/app/main.py",
+        "backend/requirements.txt",
+        "web/package.json",
+        "mobile/pubspec.yaml"
+      ]
+    },
+    "deployment-manager": {
+      "type": "general-purpose",
+      "description": "Manages deployments to staging and production",
+      "autoActivate": false,
+      "triggers": [
+        "/deploy",
+        "deploy to",
+        "release"
+      ],
+      "instructions": "You are a deployment manager agent. For each deployment:\n\n**Pre-deployment:**\n1. Run all tests\n2. Check build success\n3. Verify migrations ready\n4. Confirm env vars set\n5. Check health endpoints\n\n**Deployment:**\n1. Build Docker images\n2. Tag versions properly\n3. Push to registry\n4. Update configs\n5. Deploy to DocPloy\n\n**Post-deployment:**\n1. Run health checks\n2. Monitor logs\n3. Verify services\n4. Smoke tests\n5. Notify completion\n\nFor production: Always have rollback plan ready.",
+      "context": [
+        "docker-compose.yml",
+        "backend/Dockerfile",
+        "web/Dockerfile"
+      ]
+    }
+  },
+  "parallelExecution": {
+    "enabled": true,
+    "maxConcurrent": 3,
+    "useCases": [
+      "Building mobile + web + backend simultaneously",
+      "Running tests across all platforms",
+      "Searching code in multiple directories",
+      "Analyzing performance across stack"
+    ]
+  },
+  "recommendations": {
+    "alwaysUseSubAgents": [
+      "Complex multi-file searches",
+      "Features touching multiple layers",
+      "Large refactoring tasks",
+      "Comprehensive testing",
+      "Performance analysis",
+      "Security audits"
+    ],
+    "avoidSubAgentsFor": [
+      "Simple single-file edits",
+      "Quick bug fixes in one file",
+      "Reading documentation",
+      "Answering questions"
+    ]
+  }
+}

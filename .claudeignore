@@ -1,0 +1,61 @@
+# Claude Code Ignore File
+# Files and directories to exclude from Claude Code context
+
+# Dependencies
+node_modules/
+.npm/
+bower_components/
+mobile/.dart_tool/
+mobile/.pub-cache/
+mobile/build/
+
+# Build outputs
+web/.next/
+web/out/
+mobile/build/
+*.pyc
+__pycache__/
+*.so
+*.dylib
+*.dll
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+postgres_data/
+
+# Large files
+*.mp4
+*.mov
+*.zip
+*.tar.gz
+
+# Generated files
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.packages
+
+# Test coverage
+coverage/
+.coverage
+htmlcov/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

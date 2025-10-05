@@ -1,0 +1,27 @@
+{
+  "hooks": {
+    "user-prompt-submit": {
+      "command": "echo '🤖 Claude Code is processing your request...'",
+      "description": "Shows a friendly message when you submit a prompt"
+    },
+    "tool-use-start": {
+      "command": "echo '🔧 Tool: $TOOL_NAME'",
+      "description": "Shows which tool is being used"
+    }
+  },
+  "settings": {
+    "defaultModel": "claude-sonnet-4-5",
+    "autoSave": true,
+    "contextWindow": "large"
+  },
+  "project": {
+    "name": "Flowz",
+    "description": "AI-Powered Fitness Platform",
+    "stack": {
+      "mobile": "Flutter",
+      "web": "Next.js 15",
+      "backend": "FastAPI + PostgreSQL",
+      "infrastructure": "Docker"
+    }
+  }
+}
