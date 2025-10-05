@@ -1,12 +1,19 @@
-# 🌊 RAPIDS Method v2.0
+# 🌊 RAPIDS Method v2.1
 
 **R**eusable **A**gent-**P**owered **I**ntelligence **D**evelopment **S**ystem
 
-> **Global** Claude Code configuration for solo developers who ship fast and make money
+> **Global** Claude Code configuration with beautiful Ink TUI for solo developers who ship fast and make money
 
 ## 🎯 What is RAPIDS?
 
 RAPIDS is a **global installation** for Claude Code that transforms **ALL your projects** into AI-assisted development powerhouses.
+
+**What's New in v2.1:**
+- 🎨 **Ink TUI**: Beautiful terminal UI by Vadim Demedes (used by Claude Code, GitHub Copilot)
+- 🚀 **Interactive Installation**: Progress bars, spinners, gradients, and real-time feedback
+- ✨ **Project Wizard**: Interactive project creation with stack presets
+- 📊 **Live Stats**: Real-time installation progress and metrics
+- 🎭 **BigText Logo**: Gradient RAPIDS branding in terminal
 
 **What Changed in v2.0:**
 - ✅ **Global Installation**: Install once, use everywhere
@@ -75,21 +82,35 @@ rapids-update               # Update RAPIDS
 
 ## 📦 Installation (One-Time, 60 seconds)
 
-### Global Installation (Recommended)
+### Interactive TUI Installation (Recommended - Beautiful!)
+
 ```bash
 # 1. Clone RAPIDS
 git clone https://github.com/yanimeziani/rapids.git
 cd rapids
 
-# 2. Install globally
-./install-global.sh
+# 2. Run beautiful Ink TUI installer
+./install-tui.sh
+
+# Watch the magic:
+# ✓ Environment detection
+# ✓ RAPIDS configuration installation with live stats
+# ✓ MCP servers setup with progress (5/5)
+# ✓ CLI helpers creation
+# ✓ Shell configuration update
+# ✓ Installation verification
 
 # 3. Restart terminal
 
-# 4. Create projects instantly!
+# 4. Create projects interactively!
+node --import tsx/esm cli/init.js
+# Interactive wizard with:
+# - Project name input
+# - Stack preset selection (Full/Mobile/Web/Backend)
+# - Beautiful success screen
+
+# Or use CLI helper:
 rapids-init-project my-app
-cd my-app
-# Start coding - all agents available!
 ```
 
 **What Gets Installed:**
@@ -97,12 +118,15 @@ cd my-app
 - 5 MCP servers → Pre-configured and ready
 - CLI commands → Available in all terminals
 - Templates → Ready for any new project
+- **Ink TUI** → Beautiful terminal interface powered by React
 
-### Per-Project Install (Legacy)
+### Classic Bash Installation (Alternative)
+
 ```bash
-# In your project directory
-curl -L https://github.com/yanimeziani/rapids/archive/main.tar.gz | tar -xz --strip=1
-./install.sh
+# For systems without Node.js 20+
+git clone https://github.com/yanimeziani/rapids.git
+cd rapids
+./install-global.sh
 ```
 
 ## 🎨 Customization
@@ -162,7 +186,8 @@ git diff .claude/
 
 | RAPIDS Version | Claude Code | Anthropic Model | Features | Status |
 |----------------|-------------|-----------------|----------|--------|
-| **v2.0** | Latest | Sonnet 4.5 | Global install + Marketing + MCPs | ✅ **Current** |
+| **v2.1** | Latest | Sonnet 4.5 | **Ink TUI** + Global + Marketing + MCPs | ✅ **Current** |
+| v2.0 | Latest | Sonnet 4.5 | Global install + Marketing + MCPs | ⚠️ Legacy |
 | v1.0 | Latest | Sonnet 4.5 | Per-project, 9 agents | ⚠️ Legacy |
 
 ## 🏗️ Architecture

@@ -20,16 +20,27 @@ RAPIDS is a **global installation** for Claude Code that gives you 10 autonomous
 
 ## ⚡ Global Installation (One-Time)
 
+### Interactive TUI (Recommended - Beautiful!)
+
 ```bash
-# Clone and install globally
+# Clone RAPIDS
 git clone https://github.com/yanimeziani/rapids.git
 cd rapids
-./install-global.sh
 
-# Restart terminal, then create any project:
-rapids-init-project my-app
-cd my-app
-# Start coding with Claude Code - all agents available!
+# Run interactive installer with Ink TUI
+./install-tui.sh
+
+# Restart terminal, then create projects interactively:
+node --import tsx/esm cli/init.js
+# Or use the CLI helper (after restart):
+rapids-init-project
+```
+
+### Classic Bash (Alternative)
+
+```bash
+# For systems without Node.js 20+
+./install-global.sh
 ```
 
 ## 🚀 What You Get (Globally)
