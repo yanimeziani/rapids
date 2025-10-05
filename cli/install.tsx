@@ -18,8 +18,6 @@ const STEPS = [
 	{ id: 'detect', name: 'Detecting environment', duration: 100 },
 	{ id: 'copy', name: 'Installing RAPIDS configuration', duration: 200 },
 	{ id: 'mcps', name: 'Setting up MCP servers', duration: 0 },
-	{ id: 'cli', name: 'Creating CLI helpers', duration: 100 },
-	{ id: 'shell', name: 'Updating shell configuration', duration: 100 },
 	{ id: 'verify', name: 'Verifying installation', duration: 100 }
 ];
 
@@ -49,54 +47,46 @@ function App() {
 					throw new Error('⚠️  RAPIDS currently supports Mac only. Linux/Windows support coming soon!');
 				}
 
-				// Global config directory (fresh install required)
-				const claudeDir = path.join(os.homedir(), '.config/claude');
+				// Claude Code user directory
+				const claudeUserDir = path.join(os.homedir(), '.claude');
 				const sourceDir = path.join(__dirname, '..');
+				const sourceClaudeDir = path.join(sourceDir, '.claude');
 
-				// Step 1: Detect environment and check existing config
+				// Step 1: Detect environment
 				if (cancelled) return;
 				setCurrentStep(0);
 
-				// Warning: This will override existing config
-				const configExists = await fs.pathExists(claudeDir);
-				if (configExists) {
-					// Note: We proceed with override as warned in documentation
-					await fs.remove(claudeDir);
-				}
-
+				await fs.ensureDir(claudeUserDir);
 				await new Promise(resolve => setTimeout(resolve, STEPS[0].duration));
 
-				// Step 2: Copy RAPIDS configuration to ~/.config/claude
+				// Step 2: Install RAPIDS features to ~/.claude/ in organized folders
 				if (cancelled) return;
 				setCurrentStep(1);
-				await fs.ensureDir(claudeDir);
-				await fs.copy(path.join(sourceDir, '.claude'), claudeDir, {
-					overwrite: true,
-					filter: (src) => !src.includes('settings.local.json')
-				});
 
-				// Install agents as separate files in ~/.claude/agents/
-				const agentsDir = path.join(os.homedir(), '.claude/agents');
+				// Install agents as individual markdown files in ~/.claude/agents/
+				const agentsDir = path.join(claudeUserDir, 'agents');
 				await fs.ensureDir(agentsDir);
 
-				const subagentsConfig = await fs.readJSON(path.join(claudeDir, 'subagents-config.json'));
+				const subagentsConfig = await fs.readJSON(path.join(sourceClaudeDir, 'subagents-config.json'));
 				const agentNames = Object.keys(subagentsConfig.agents || {});
 
 				for (const agentName of agentNames) {
 					const agentData = subagentsConfig.agents[agentName];
-					const agentContent = `# ${agentName.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+					const agentContent = `---
+name: ${agentName}
+description: ${agentData.description}
+tools: Bash, Edit, Glob, Grep, Read, Write, WebFetch, WebSearch
+model: sonnet
+---
 
-**Type:** ${agentData.type}
-**Auto-activate:** ${agentData.autoActivate}
-
-## Triggers
-${agentData.triggers.map(t => `- ${t}`).join('\n')}
-
-## Instructions
 ${agentData.instructions}
 
 ## Context Files
 ${agentData.context && agentData.context.length > 0 ? agentData.context.map(c => `- ${c}`).join('\n') : 'No specific context files'}
+
+## Triggers
+This agent activates for:
+${agentData.triggers.map(t => `- ${t}`).join('\n')}
 `;
 					await fs.writeFile(
 						path.join(agentsDir, `${agentName}.md`),
@@ -104,138 +94,83 @@ ${agentData.context && agentData.context.length > 0 ? agentData.context.map(c =>
 					);
 				}
 
+				// Install commands to ~/.claude/commands/
+				const commandsDir = path.join(claudeUserDir, 'commands');
+				await fs.ensureDir(commandsDir);
+				await fs.copy(path.join(sourceClaudeDir, 'commands'), commandsDir, {
+					overwrite: true
+				});
+
+				// Install prompts/templates to ~/.claude/prompts/
+				const promptsDir = path.join(claudeUserDir, 'prompts');
+				await fs.ensureDir(promptsDir);
+				await fs.copy(path.join(sourceClaudeDir, 'prompts'), promptsDir, {
+					overwrite: true
+				});
+
+				// Install output-styles to ~/.claude/output-styles/
+				const outputStylesDir = path.join(claudeUserDir, 'output-styles');
+				await fs.ensureDir(outputStylesDir);
+				await fs.copy(path.join(sourceClaudeDir, 'output-styles'), outputStylesDir, {
+					overwrite: true
+				});
+
+				// Install RAPIDS documentation and config files to ~/.claude/
+				// Copy documentation files directly to ~/.claude/
+				const docsToCopy = ['README.md', 'RAPIDS_METHOD.md', 'DEVELOPMENT_GUIDE.md', 'SUBAGENTS_GUIDE.md', 'shortcuts.md'];
+				for (const doc of docsToCopy) {
+					if (await fs.pathExists(path.join(sourceClaudeDir, doc))) {
+						await fs.copy(path.join(sourceClaudeDir, doc), path.join(claudeUserDir, `rapids-${doc}`));
+					}
+				}
+
+				// Copy config files for reference
+				await fs.copy(path.join(sourceClaudeDir, 'subagents-config.json'), path.join(claudeUserDir, 'rapids-subagents-config.json'));
+				await fs.copy(path.join(sourceClaudeDir, 'STACK_CONFIG.json'), path.join(claudeUserDir, 'rapids-STACK_CONFIG.json'));
+
 				// Count installed items
-				const configData = await fs.readJSON(path.join(claudeDir, 'config.json'));
-				const agents = Object.keys(configData.agents || {});
-				const commands = await fs.readdir(path.join(claudeDir, 'commands'));
-				const templates = await fs.readdir(path.join(claudeDir, 'prompts'));
+				const commands = await fs.readdir(commandsDir);
+				const templates = await fs.readdir(promptsDir);
 
 				setStats({
-					agents: agents.length,
-					commands: commands.length,
-					templates: templates.length
+					agents: agentNames.length,
+					commands: commands.filter(f => f.endsWith('.md')).length,
+					templates: templates.filter(f => f.endsWith('.md')).length
 				});
 
 				await new Promise(resolve => setTimeout(resolve, STEPS[1].duration));
 
-				// Step 3: Setup MCPs (lightweight - just copy config)
+				// Step 3: Setup MCPs - install to user ~/.claude/.mcp.json
 				if (cancelled) return;
 				setCurrentStep(2);
 
-				// Copy MCP config (packages installed on-demand by Claude Code)
-				const mcpConfig = await fs.readJSON(path.join(claudeDir, 'mcp-config.json'));
-				await fs.writeJSON(
-					path.join(claudeDir, 'mcp-servers.json'),
-					mcpConfig,
-					{ spaces: 2 }
-				);
+				// Copy MCP config to user-level .mcp.json
+				const mcpConfig = await fs.readJSON(path.join(sourceClaudeDir, 'mcp-config.json'));
+				const userMcpConfig = path.join(claudeUserDir, '.mcp.json');
 
-				// Mark all MCPs as configured (they'll install on first use)
+				// Merge with existing config if it exists
+				let finalMcpConfig = mcpConfig;
+				if (await fs.pathExists(userMcpConfig)) {
+					const existingConfig = await fs.readJSON(userMcpConfig);
+					finalMcpConfig = {
+						mcpServers: {
+							...existingConfig.mcpServers,
+							...mcpConfig.mcpServers
+						}
+					};
+				}
+
+				await fs.writeJSON(userMcpConfig, finalMcpConfig, { spaces: 2 });
+
+				// Mark all MCPs as configured
 				setInstalledMCPs(MCPs.map(m => m.name));
 
 				await new Promise(resolve => setTimeout(resolve, STEPS[2].duration));
 
-				// Step 4: Create CLI helpers
+				// Step 3: Verify
 				if (cancelled) return;
 				setCurrentStep(3);
-
-				const cliScript = `#!/bin/bash
-# RAPIDS CLI Helper
-
-rapids-init-project() {
-    local project_name=\${1:-"my-app"}
-    echo "🌊 Initializing RAPIDS project: $project_name"
-
-    mkdir -p "$project_name"/{mobile,web,backend,docs}
-
-    # Copy FULL RAPIDS configuration from global directory
-    if [ -d "${claudeDir}" ]; then
-        cp -r "${claudeDir}" "$project_name/.claude"
-        echo "✅ Installed 10 agents, 5 MCPs, commands & templates"
-    else
-        echo "⚠️  RAPIDS not found. Run: npx @yanimeziani/rapids-install"
-        return 1
-    fi
-
-    echo "✅ Project $project_name initialized with RAPIDS!"
-    echo "Next: cd $project_name && start coding with Claude Code"
-}
-
-rapids-add-here() {
-    echo "🌊 Adding RAPIDS to current directory..."
-
-    if [ -d ".claude" ]; then
-        echo "⚠️  .claude directory already exists. Overwrite? (y/N)"
-        read -r response
-        if [[ ! "$response" =~ ^[Yy]$ ]]; then
-            echo "Cancelled."
-            return 0
-        fi
-    fi
-
-    if [ -d "${claudeDir}" ]; then
-        cp -r "${claudeDir}" ./.claude
-        echo "✅ RAPIDS installed in current directory!"
-        echo "10 agents, 5 MCPs, commands & templates ready"
-        echo "Start coding with Claude Code now!"
-    else
-        echo "⚠️  RAPIDS not found. Run: npx @yanimeziani/rapids-install"
-        return 1
-    fi
-}
-
-rapids-update() {
-    echo "🔄 Updating RAPIDS from GitHub..."
-    local temp_dir=$(mktemp -d)
-    curl -L https://github.com/yanimeziani/rapids/archive/main.tar.gz | tar -xz -C "$temp_dir" --strip=1
-
-    if [ -d "${claudeDir}" ]; then
-        cp -r "$temp_dir/.claude"/* "${claudeDir}/"
-        echo "✅ RAPIDS updated successfully!"
-    else
-        echo "⚠️  RAPIDS not found. Run rapids-install first."
-    fi
-
-    rm -rf "$temp_dir"
-}
-
-export -f rapids-init-project
-export -f rapids-add-here
-export -f rapids-update
-`;
-
-				const cliPath = path.join(os.homedir(), '.rapids-cli.sh');
-				await fs.writeFile(cliPath, cliScript);
-				await fs.chmod(cliPath, 0o755);
-
 				await new Promise(resolve => setTimeout(resolve, STEPS[3].duration));
-
-				// Step 5: Update shell config
-				if (cancelled) return;
-				setCurrentStep(4);
-
-				const shellRC = await (async () => {
-					const zshrc = path.join(os.homedir(), '.zshrc');
-					const bashrc = path.join(os.homedir(), '.bashrc');
-
-					if (await fs.pathExists(zshrc)) return zshrc;
-					if (await fs.pathExists(bashrc)) return bashrc;
-					return null;
-				})();
-
-				if (shellRC) {
-					const content = await fs.readFile(shellRC, 'utf-8');
-					if (!content.includes('.rapids-cli.sh')) {
-						await fs.appendFile(shellRC, `\n# RAPIDS CLI\nsource $HOME/.rapids-cli.sh\n`);
-					}
-				}
-
-				await new Promise(resolve => setTimeout(resolve, STEPS[4].duration));
-
-				// Step 6: Verify
-				if (cancelled) return;
-				setCurrentStep(5);
-				await new Promise(resolve => setTimeout(resolve, STEPS[5].duration));
 
 				if (!cancelled) {
 					setStatus('success');
@@ -293,22 +228,19 @@ export -f rapids-update
 					</Text>
 					<Text>✅ {stats.commands} Slash Commands</Text>
 					<Text>✅ {stats.templates} Stack Templates</Text>
-					<Text>✅ Global CLI Helper Commands</Text>
 				</Box>
 				<Newline />
 				<Box flexDirection="column" borderStyle="round" borderColor="magenta" padding={1}>
 					<Text bold color="magenta">
 						Next Steps:
 					</Text>
-					<Text>1. Restart your terminal</Text>
-					<Text>2. New project: <Text color="cyan">rapids-init-project my-app</Text></Text>
-					<Text>   Existing project: <Text color="cyan">cd your-project && rapids-add-here</Text></Text>
-					<Text>3. Start coding with Claude Code</Text>
-					<Text>4. Use MCPs: <Text color="cyan">"use context7"</Text> in any prompt</Text>
+					<Text>1. Start Claude Code in any project</Text>
+					<Text>2. Use installed agents, commands & MCPs automatically</Text>
+					<Text>3. Use MCPs: <Text color="cyan">"use context7"</Text> in any prompt</Text>
 				</Box>
 				<Newline />
 				<Gradient name="rainbow">
-					<Text bold>🌊 RAPIDS is now globally available! Install once. Ship fast. Make money. 🚀</Text>
+					<Text bold>🌊 RAPIDS is now globally installed! Just run Claude Code and ship. 🚀</Text>
 				</Gradient>
 			</Box>
 		);
@@ -322,10 +254,10 @@ export -f rapids-update
 			<BigText text="RAPIDS" colors={['cyan', 'blue']} />
 			<Newline />
 			<Box borderStyle="round" borderColor="yellow" padding={1} marginBottom={1}>
-				<Text color="yellow" bold>⚠️  Mac Only - Fresh Install Required</Text>
+				<Text color="yellow" bold>⚠️  Mac Only - Installing to ~/.claude/</Text>
 				<Newline />
-				<Text dimColor>Installing to: ~/.config/claude</Text>
-				<Text dimColor>Existing config will be overridden</Text>
+				<Text dimColor>Features organized in separate folders:</Text>
+				<Text dimColor>• agents/ • commands/ • prompts/ • mcp-servers/</Text>
 			</Box>
 			<Gradient name="pastel">
 				<Text bold>Global Installation in Progress...</Text>
