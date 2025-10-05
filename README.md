@@ -136,7 +136,7 @@ Launch design-master + feature-builder + marketing-strategist in parallel to:
 - **Next.js 15** web applications
 - **FastAPI** backends with async/await
 - **PostgreSQL** databases
-- **DocPloy** deployment
+- **DokPloy** deployment
 - **Making money** (Marketing & Business Strategy Agent)
 
 ## 📊 Productivity Gains
@@ -208,7 +208,7 @@ MIT License - Use freely in your projects.
 
 ## 🙏 Credits
 
-Built for solo developers deploying on DocPloy with:
+Built for solo developers deploying on DokPloy with:
 - **Anthropic Claude Code** - AI pair programming
 - **Claude Sonnet 4.5** - Language model
 - **Ink by Vadim Demedes** - Terminal UI framework
