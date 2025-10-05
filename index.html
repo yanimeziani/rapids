@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAPIDS - Claude Code AI Framework</title>
+    <meta name="description" content="10 AI agents, 5 MCPs, marketing automation. Ship fast, make money.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .install-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .command-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .command {
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 1.25rem;
+            color: #fff;
+            flex: 1;
+            text-align: left;
+            user-select: all;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            color: #667eea;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+        }
+
+        .copy-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .copy-btn.copied {
+            background: #10b981;
+            color: white;
+        }
+
+        .features {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1rem;
+            }
+            .command {
+                font-size: 1rem;
+            }
+            .command-wrapper {
+                flex-direction: column;
+            }
+            .copy-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌊 RAPIDS</h1>
+        <p class="subtitle">10 AI agents · 5 MCPs · Marketing automation</p>
+
+        <div class="install-box">
+            <div class="command-wrapper">
+                <code class="command" id="install-command">npx rapids-ai</code>
+                <button class="copy-btn" id="copy-btn" onclick="copyCommand()">Copy</button>
+            </div>
+            <div class="features">
+                ✅ Feature builder · Bug hunter · Code searcher<br>
+                ✅ Test generator · Refactor master · Performance analyzer<br>
+                ✅ DB architect · Security scanner · Deployment manager<br>
+                ✅ Marketing strategist (the most important one)
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="https://github.com/yanimeziani/rapids" class="link">GitHub</a>
+            <a href="https://www.npmjs.com/package/rapids-ai" class="link">npm</a>
+            <a href="https://github.com/yanimeziani/rapids#readme" class="link">Docs</a>
+        </div>
+    </div>
+
+    <script>
+        function copyCommand() {
+            const command = document.getElementById('install-command').textContent;
+            const btn = document.getElementById('copy-btn');
+
+            navigator.clipboard.writeText(command).then(() => {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+    </script>
+</body>
+</html>
