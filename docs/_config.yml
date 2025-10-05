@@ -1,0 +1,8 @@
+theme: jekyll-theme-cayman
+title: RAPIDS Documentation
+description: Rapid AI-Powered Development & Shipping - Ship fast, make money
+show_downloads: true
+github:
+  repository_url: https://github.com/yamz-ai/rapids
+  zip_url: https://github.com/yamz-ai/rapids/zipball/main
+  tar_url: https://github.com/yamz-ai/rapids/tarball/main

@@ -18,9 +18,9 @@ RAPIDS is a global Claude Code configuration package with 10 AI agents, 5 MCPs, 
    - `.claude/STACK_CONFIG.json` - Stack templates
 
 3. **Documentation (when specifically asked)**:
-   - `.claude/README.md` - Quick reference
-   - `.claude/RAPIDS_METHOD.md` - Methodology
-   - `.claude/DEVELOPMENT_GUIDE.md` - Dev workflow
+   - `docs/README.md` - Quick reference
+   - `docs/RAPIDS_METHOD.md` - Methodology
+   - `docs/DEVELOPMENT_GUIDE.md` - Dev workflow
 
 ### What to NEVER Read (Forbidden)
 - `node_modules/` - Dependencies (already in .claudeignore)

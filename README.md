@@ -170,9 +170,9 @@ All your projects automatically have access to:
 
 ## 📚 Documentation
 
-- [**RAPIDS Method**](./.claude/RAPIDS_METHOD.md) - Complete methodology
-- [**Development Guide**](./.claude/DEVELOPMENT_GUIDE.md) - Usage guide
-- [**Sub-Agents Guide**](./.claude/SUBAGENTS_GUIDE.md) - Agent details
+- [**RAPIDS Method**](./docs/RAPIDS_METHOD.md) - Complete methodology
+- [**Development Guide**](./docs/DEVELOPMENT_GUIDE.md) - Usage guide
+- [**Sub-Agents Guide**](./docs/SUBAGENTS_GUIDE.md) - Agent details
 - [**Stack Config**](./.claude/STACK_CONFIG.json) - Stack requirements
 
 ## 🔧 Requirements
@@ -262,9 +262,12 @@ GitHub Actions templates included:
 
 - [Quick Start Guide](./docs/QUICK_START.md)
 - [Token Optimization Guide](./docs/RAPIDS_OPTIMIZATION_GUIDE.md)
-- [RAPIDS Method](./.claude/RAPIDS_METHOD.md)
-- [Development Guide](./.claude/DEVELOPMENT_GUIDE.md)
-- [Subagents Guide](./.claude/SUBAGENTS_GUIDE.md)
+- [Installation Structure](./docs/INSTALLATION_STRUCTURE.md)
+- [RAPIDS Method](./docs/RAPIDS_METHOD.md)
+- [Development Guide](./docs/DEVELOPMENT_GUIDE.md)
+- [Subagents Guide](./docs/SUBAGENTS_GUIDE.md)
+- [Shortcuts](./docs/shortcuts.md)
+- [Changelog](./docs/CHANGELOG.md)
 
 ## Quick Start
 
