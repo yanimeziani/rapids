@@ -1,6 +1,4 @@
 # Development files
-*.md
-!README.md
 .DS_Store
 *.log
 
@@ -19,6 +17,15 @@ test/
 # CI/CD
 .github/
 
-# Docs (except what's needed)
+# Docs
 docs/
+
+# Build artifacts
+dist/
+scripts/
+
+# Include essential files
+!README.md
+!CLAUDE.md
 !.claude/
+!cli/

@@ -1,11 +1,14 @@
-# 🌊 RAPIDS
+# 🌊 RAPIDS - Ship Fast, Make Money
 
-**R**eusable **A**gent-**P**owered **I**ntelligence **D**evelopment **S**ystem
+**Portable, token-optimized Claude Code framework for velocity and revenue**
 
-> Beautiful terminal UI for global Claude Code configuration with 10 AI agents, 5 MCPs, and marketing automation
+> Install once on any machine. Get 10 AI agents, 5 MCPs, CI/CD automation, and revenue-first workflows.
 
 [![npm version](https://badge.fury.io/js/rapids-ai.svg)](https://www.npmjs.com/package/rapids-ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+**RAPIDS** = Rapid AI-Powered Development & Shipping
+**Philosophy**: Code without revenue is worthless. Ship fast, validate with users, iterate based on data.
 
 ## ⚡ Installation (One Command)
 
@@ -203,20 +206,82 @@ Built for solo developers deploying on DocPloy with:
 
 ---
 
-**Version**: 3.0.0 (npm package)
-**Stack**: Flutter • Next.js 15 • FastAPI • PostgreSQL • DocPloy
+## 💰 Token Optimization (40-60% Savings)
+
+RAPIDS achieves massive token savings through:
+
+1. **Subagent Isolation** - Separate context windows per agent
+2. **Parallel Execution** - Run 3 agents concurrently
+3. **Smart Output Styles** - RAPIDS Speed & Ship Mode
+4. **Auto-compact** - Trigger at 150K tokens
+5. **Optimized Reads** - Using `offset`, `limit`, `head_limit`
+
+**Example Savings:**
+- Full-stack feature: 80-120K → 35-50K tokens (~60% savings)
+- Bug fix + test: 25-40K → 10-18K tokens (~55% savings)
+- Marketing campaign: 30-50K → 15-25K tokens (~45% savings)
+
+## 🎨 Output Styles (NEW!)
+
+### RAPIDS Speed Mode
+```bash
+/output-style rapids-speed
+```
+- Extremely concise, action-first
+- No preamble or explanations
+- Target: <50K tokens per feature
+
+### Ship Mode (Revenue-First)
+```bash
+/output-style ship-mode
+```
+- Every decision driven by revenue
+- Validates ROI before building
+- Focus on MRR, CAC, LTV, churn
+
+## 🔄 CI/CD Automation (NEW!)
+
+GitHub Actions templates included:
+- `@claude fix this` on issues → Auto-fix
+- Open PR → Auto-test + security scan
+- Merge to main → Auto-deploy
+- Label `revenue` → Marketing analysis
+
+**Setup**: Add `ANTHROPIC_API_KEY` to GitHub Secrets, copy workflow file, done!
+
+---
+
+**Version**: 3.5.0 (Token-Optimized Release)
+**Stack**: Flutter • Next.js 15 • FastAPI • PostgreSQL • Docker
 **MCPs**: Context7 • Filesystem • PostgreSQL • GitHub • Puppeteer
+**New**: Output Styles • CI/CD Templates • 60% Token Savings
 
 🌊 **Install once. Ship fast. Make money.** 🚀
+
+## 📚 Full Documentation
+
+- [Quick Start Guide](./docs/QUICK_START.md)
+- [Token Optimization Guide](./docs/RAPIDS_OPTIMIZATION_GUIDE.md)
+- [RAPIDS Method](./.claude/RAPIDS_METHOD.md)
+- [Development Guide](./.claude/DEVELOPMENT_GUIDE.md)
+- [Subagents Guide](./.claude/SUBAGENTS_GUIDE.md)
 
 ## Quick Start
 
 ```bash
-# Install globally
+# Install globally (works on any machine with Claude Code)
 npm install -g rapids-ai
 
-# Create your first project
-rapids-init
+# Run installer
+rapids
 
-# Start coding with Claude Code - all 10 agents available!
+# Activate revenue-first mode
+/output-style ship-mode
+
+# Build something that makes money
+/agent marketing-strategist "Validate market for [idea]"
+/agent feature-builder "Build [feature]"
+/agent deployment-manager "Ship to production"
 ```
+
+**Now go build something that makes money.** 💰

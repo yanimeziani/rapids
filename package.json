@@ -1,16 +1,14 @@
 {
   "name": "rapids-ai",
-  "version": "3.0.0",
-  "description": "🌊 RAPIDS - Beautiful TUI for global Claude Code configuration with 10 AI agents, 5 MCPs, and marketing automation",
+  "version": "3.5.0",
+  "description": "🌊 RAPIDS - Token-optimized portable Claude Code framework with 10 AI agents, 5 MCPs, CI/CD automation, and revenue-first output styles. Ship fast, make money.",
   "type": "module",
   "bin": {
-    "rapids": "./cli/install.js",
-    "rapids-init": "./cli/init.js",
-    "rapids-update": "./cli/update.js"
+    "rapids": "./cli/install.tsx",
+    "rapids-init": "./cli/init.tsx",
+    "rapids-update": "./cli/update.tsx"
   },
   "scripts": {
-    "postinstall": "node cli/install.js",
-    "prepublishOnly": "npm run test",
     "test": "echo 'Tests coming soon' && exit 0"
   },
   "keywords": [
@@ -52,6 +50,7 @@
     "ink-text-input": "^6.0.0",
     "ora": "^8.1.1",
     "react": "^18.3.1",
+    "tsx": "^4.19.2",
     "update-notifier": "^7.3.1"
   },
   "devDependencies": {
@@ -59,7 +58,6 @@
     "@types/node": "^22.10.2",
     "@types/react": "^18.3.17",
     "esbuild": "^0.24.2",
-    "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
   "engines": {

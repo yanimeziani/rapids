@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S node --import tsx/esm
 import React, { useState, useEffect } from 'react';
 import { render, Text, Box, Newline } from 'ink';
 import Spinner from 'ink-spinner';
@@ -26,7 +26,7 @@ function App() {
 					? path.join(os.homedir(), 'Library/Application Support/Claude')
 					: path.join(os.homedir(), '.config/claude');
 
-				const rapidsDir = path.join(claudeDir, 'rapids');
+				const rapidsDir = path.join(claudeDir, '.claude');
 
 				// Check current version
 				if (!cancelled) {

@@ -1,27 +1,65 @@
 {
   "hooks": {
     "user-prompt-submit": {
-      "command": "echo '🤖 Claude Code is processing your request...'",
-      "description": "Shows a friendly message when you submit a prompt"
+      "command": "echo '🚀 RAPIDS processing...'",
+      "description": "RAPIDS startup message"
     },
     "tool-use-start": {
-      "command": "echo '🔧 Tool: $TOOL_NAME'",
-      "description": "Shows which tool is being used"
+      "command": "echo '⚡️ $TOOL_NAME'",
+      "description": "Tool indicator"
+    },
+    "session-start": {
+      "command": "echo '💎 RAPIDS loaded. Ship fast, make money.'",
+      "description": "Session reminder - focus on velocity and revenue"
     }
   },
   "settings": {
     "defaultModel": "claude-sonnet-4-5",
     "autoSave": true,
-    "contextWindow": "large"
+    "contextWindow": "large",
+    "compactOnThreshold": 150000,
+    "tokenOptimization": true
   },
-  "project": {
-    "name": "Flowz",
-    "description": "AI-Powered Fitness Platform",
-    "stack": {
-      "mobile": "Flutter",
-      "web": "Next.js 15",
-      "backend": "FastAPI + PostgreSQL",
-      "infrastructure": "Docker"
+  "agents": {
+    "feature-builder": {
+      "type": "general-purpose",
+      "description": "Builds complete features across mobile, web, and backend"
+    },
+    "bug-hunter": {
+      "type": "general-purpose",
+      "description": "Finds and fixes bugs across the entire codebase"
+    },
+    "code-searcher": {
+      "type": "general-purpose",
+      "description": "Searches and analyzes code patterns across the project"
+    },
+    "test-generator": {
+      "type": "general-purpose",
+      "description": "Generates comprehensive tests for features"
+    },
+    "refactor-master": {
+      "type": "general-purpose",
+      "description": "Refactors code while maintaining functionality"
+    },
+    "performance-analyzer": {
+      "type": "general-purpose",
+      "description": "Analyzes and optimizes application performance"
+    },
+    "db-architect": {
+      "type": "general-purpose",
+      "description": "Manages database schema and migrations"
+    },
+    "security-scanner": {
+      "type": "general-purpose",
+      "description": "Scans for security vulnerabilities"
+    },
+    "deployment-manager": {
+      "type": "general-purpose",
+      "description": "Manages deployments to staging and production"
+    },
+    "marketing-strategist": {
+      "type": "general-purpose",
+      "description": "Generates revenue, acquires users, and scales the business"
     }
   }
 }

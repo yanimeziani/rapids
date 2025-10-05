@@ -1,0 +1,129 @@
+name: Claude Code CI/CD
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [opened, synchronize]
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  claude-automation:
+    runs-on: ubuntu-latest
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request') ||
+      (github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'claude'))
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run Claude Code
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Optional: Specify model
+          # model: claude-sonnet-4-5
+          # Optional: Custom args
+          # claude_args: --compact --no-interaction
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  auto-test:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Tests via Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Run all tests for this PR and report results.
+            If tests fail, analyze failures and suggest fixes.
+            Use the test-generator agent for comprehensive coverage.
+
+  security-scan:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'security'))
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Security Scan via Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            /agent security-scanner "Scan this PR for security vulnerabilities"
+            Check for:
+            - SQL injection
+            - XSS vulnerabilities
+            - Authentication issues
+            - Secrets in code
+            - Dependency vulnerabilities
+
+            Report findings with severity levels.
+
+  auto-deploy:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.base.ref == 'main'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            /agent deployment-manager "Deploy to production"
+            1. Run health checks
+            2. Build Docker images
+            3. Deploy to staging first
+            4. Run smoke tests
+            5. Deploy to production
+            6. Monitor logs for 5 minutes
+
+            Report deployment status.
+        env:
+          DEPLOY_ENV: production
+
+  marketing-analysis:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'feature') || contains(github.event.issue.labels.*.name, 'revenue')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Marketing Strategy via Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            /agent marketing-strategist "Analyze revenue potential for this feature"
+
+            Provide:
+            1. Revenue impact estimate
+            2. User acquisition strategy
+            3. Go-to-market plan
+            4. Success metrics
+            5. Launch timeline
+
+            Focus on monetization and growth.

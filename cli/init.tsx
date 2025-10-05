@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S node --import tsx/esm
 import React, { useState } from 'react';
 import { render, Text, Box, Newline } from 'ink';
 import TextInput from 'ink-text-input';
@@ -79,7 +79,7 @@ function App() {
 				? path.join(os.homedir(), 'Library/Application Support/Claude')
 				: path.join(os.homedir(), '.config/claude');
 
-			const rapidsDir = path.join(claudeDir, 'rapids');
+			const rapidsDir = path.join(claudeDir, '.claude');
 
 			if (await fs.pathExists(rapidsDir)) {
 				// Copy settings template
