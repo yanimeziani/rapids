@@ -1,0 +1,82 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "description": "Up-to-date documentation and code examples for any library/framework",
+      "enabled": true,
+      "autoActivate": true,
+      "useCases": [
+        "Get latest API documentation for Flutter, Next.js, FastAPI",
+        "Version-specific code examples",
+        "Prevent hallucinated APIs",
+        "Stay current with framework updates"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Volumes/Seagate"],
+      "description": "Local file system access for reading, searching, and manipulating files",
+      "enabled": true,
+      "autoActivate": false,
+      "useCases": [
+        "Read files across all projects",
+        "Search for patterns in multiple repositories",
+        "Analyze project structure",
+        "Batch file operations"
+      ]
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost:5433"],
+      "description": "Direct PostgreSQL database querying and schema inspection",
+      "enabled": true,
+      "autoActivate": false,
+      "useCases": [
+        "Query database directly",
+        "Inspect schema and relationships",
+        "Debug data issues",
+        "Generate migration scripts"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "description": "GitHub repository management, issues, PRs, and code search",
+      "enabled": true,
+      "autoActivate": false,
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": ""
+      },
+      "useCases": [
+        "Create issues and PRs",
+        "Search across repositories",
+        "Manage project boards",
+        "Code review automation"
+      ]
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "description": "Web automation and scraping for market research",
+      "enabled": true,
+      "autoActivate": false,
+      "useCases": [
+        "Competitive analysis (scrape competitor sites)",
+        "Market research (trends, pricing)",
+        "Screenshot competitor UIs",
+        "Test web deployments"
+      ]
+    }
+  },
+  "integration": {
+    "globalInstallation": true,
+    "autoSync": true,
+    "perProjectOverrides": true
+  },
+  "notes": {
+    "setup": "MCPs are installed globally and available to all projects",
+    "authentication": "Set GITHUB_PERSONAL_ACCESS_TOKEN in environment for GitHub MCP",
+    "customization": "Override per project by creating .claude/mcp-config.local.json"
+  }
+}

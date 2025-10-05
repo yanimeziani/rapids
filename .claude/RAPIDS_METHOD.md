@@ -1,12 +1,19 @@
-# 🌊 RAPIDS Method v1.0
+# 🌊 RAPIDS Method v2.0
 
 **R**eusable **A**gent-**P**owered **I**ntelligence **D**evelopment **S**ystem
 
-> The ultimate Claude Code configuration methodology for solo developers deploying on DocPloy
+> **Global** Claude Code configuration for solo developers who ship fast and make money
 
 ## 🎯 What is RAPIDS?
 
-RAPIDS is a **production-ready, drop-in configuration system** for Claude Code that transforms any new project into an AI-assisted development powerhouse.
+RAPIDS is a **global installation** for Claude Code that transforms **ALL your projects** into AI-assisted development powerhouses.
+
+**What Changed in v2.0:**
+- ✅ **Global Installation**: Install once, use everywhere
+- ✅ **Marketing Strategist Agent**: THE revenue-focused agent (10th agent)
+- ✅ **5 MCP Servers**: Context7, Filesystem, PostgreSQL, GitHub, Puppeteer
+- ✅ **CLI Commands**: `rapids-init-project`, `rapids-update`
+- ✅ **Cutting-Edge**: Uses latest Claude Code & Anthropic features
 
 ### The Stack (Your Standard)
 - **Mobile**: Flutter (user-facing apps)
@@ -16,62 +23,86 @@ RAPIDS is a **production-ready, drop-in configuration system** for Claude Code t
 - **Auth**: Google Auth
 - **Deployment**: DocPloy (self-hosted Docker PaaS)
 
-## 🚀 What RAPIDS Gives You
+## 🚀 What RAPIDS Gives You (Globally)
 
-### 1. **9 Autonomous Sub-Agents**
-Specialized AI agents that work in parallel:
+### 1. **10 Autonomous Sub-Agents**
+Specialized AI agents that work in parallel (up to 3 concurrent):
+
+**Development Agents (9):**
 - Feature Builder, Bug Hunter, Code Searcher
 - Test Generator, Refactor Master, Performance Analyzer
 - DB Architect, Security Scanner, Deployment Manager
 
-### 2. **6 Slash Commands**
+**💰 THE MOST CRITICAL AGENT:**
+- **Marketing Strategist** - Revenue generation, user acquisition, GTM strategy, copywriting, pricing, growth hacking. Because **code without revenue is worthless**.
+
+### 2. **5 MCP Servers** (Model Context Protocol - Cutting-Edge)
+The "USB-C for AI" - globally available tools:
+1. **Context7** 🔥 - Up-to-date docs for any library (auto-activated)
+2. **Filesystem** - Local file access across all projects
+3. **PostgreSQL** - Direct database querying
+4. **GitHub** - Repository management
+5. **Puppeteer** - Web automation for market research
+
+### 3. **6 Slash Commands**
 Instant productivity boosters:
 - `/new-feature`, `/fix-bug`, `/refactor`
-- `/test`, `/deploy`, `/update-deps`
+- `/test`, `/deploy`, `/market` (NEW!)
 
-### 3. **3 Stack-Specific Templates**
+### 4. **3 Stack-Specific Templates**
 Code generation templates for your stack:
 - Flutter mobile features (with Riverpod)
 - Next.js pages (App Router)
 - FastAPI endpoints (with SQLAlchemy)
 
-### 4. **Complete VSCode Integration**
+### 5. **Complete VSCode Integration**
 Pre-configured development environment:
 - Tasks, Debug configs, Extensions
 - Snippets, Settings optimized for your stack
 
-### 5. **Docker-First Deployment**
+### 6. **Docker-First Deployment**
 DocPloy-ready configuration:
 - Multi-stage builds
 - Health checks
 - Parallel service orchestration
 
-## 📦 Installation (30 seconds)
-
-### Quick Start
+### 7. **Global CLI Commands**
+Available after installation:
 ```bash
-# 1. Download RAPIDS
-curl -L https://your-repo/rapids-v1.0.zip -o rapids.zip
-
-# 2. Extract into your new project
-unzip rapids.zip -d my-new-project/
-cd my-new-project/
-
-# 3. Initialize
-./scripts/rapids-init.sh
-
-# 4. Start coding with AI!
-# Open in Claude Code and start using sub-agents
+rapids-init-project <name>  # Create new project
+rapids-update               # Update RAPIDS
 ```
 
-### Manual Install
+## 📦 Installation (One-Time, 60 seconds)
+
+### Global Installation (Recommended)
 ```bash
-# Copy the .claude/ directory into your project root
-cp -r rapids-package/.claude ./
-cp -r rapids-package/.vscode ./
-cp rapids-package/.claudeignore ./
-cp -r rapids-package/scripts ./
-chmod +x scripts/*.sh
+# 1. Clone RAPIDS
+git clone https://github.com/yanimeziani/rapids.git
+cd rapids
+
+# 2. Install globally
+./install-global.sh
+
+# 3. Restart terminal
+
+# 4. Create projects instantly!
+rapids-init-project my-app
+cd my-app
+# Start coding - all agents available!
+```
+
+**What Gets Installed:**
+- 10 sub-agents → `~/Library/Application Support/Claude/rapids/` (macOS)
+- 5 MCP servers → Pre-configured and ready
+- CLI commands → Available in all terminals
+- Templates → Ready for any new project
+
+### Per-Project Install (Legacy)
+```bash
+# In your project directory
+curl -L https://github.com/yanimeziani/rapids/archive/main.tar.gz | tar -xz --strip=1
+./install.sh
 ```
 
 ## 🎨 Customization
@@ -129,10 +160,10 @@ git diff .claude/
 
 ### Version Compatibility
 
-| RAPIDS Version | Claude Code | Anthropic Model | Status |
-|----------------|-------------|-----------------|--------|
-| v1.0 | Latest | Sonnet 4.5 | ✅ Current |
-| v0.9 | Latest | Sonnet 4 | ⚠️ Legacy |
+| RAPIDS Version | Claude Code | Anthropic Model | Features | Status |
+|----------------|-------------|-----------------|----------|--------|
+| **v2.0** | Latest | Sonnet 4.5 | Global install + Marketing + MCPs | ✅ **Current** |
+| v1.0 | Latest | Sonnet 4.5 | Per-project, 9 agents | ⚠️ Legacy |
 
 ## 🏗️ Architecture
 

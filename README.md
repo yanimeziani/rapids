@@ -2,31 +2,42 @@
 
 **R**eusable **A**gent-**P**owered **I**ntelligence **D**evelopment **S**ystem
 
-> Production-ready Claude Code configuration for solo developers deploying on DocPloy
+> **Global** Claude Code configuration for solo developers who ship fast and make money
 
 ## 🎯 What is RAPIDS?
 
-RAPIDS is a minimalistic, drop-in configuration system for Claude Code that transforms any project into an AI-assisted development powerhouse.
+RAPIDS is a **global installation** for Claude Code that gives you 10 autonomous agents, 5 MCP servers, and cutting-edge AI tooling across **ALL your projects**.
+
+**The Game-Changer**: Install once, use everywhere. No more per-project setup.
 
 **Optimized for:**
-- Flutter mobile apps
+- Flutter mobile apps with Riverpod
 - Next.js 15 web applications
-- FastAPI backends
+- FastAPI backends with async/await
 - PostgreSQL databases
 - DocPloy deployment
+- **Making money** (Marketing & Business Strategy Agent)
 
-## ⚡ Quick Install
+## ⚡ Global Installation (One-Time)
 
 ```bash
-# In your new project directory
-curl -L https://github.com/yanimeziani/rapids/archive/main.tar.gz | tar -xz --strip=1
-./install.sh
+# Clone and install globally
+git clone https://github.com/yanimeziani/rapids.git
+cd rapids
+./install-global.sh
+
+# Restart terminal, then create any project:
+rapids-init-project my-app
+cd my-app
+# Start coding with Claude Code - all agents available!
 ```
 
-## 🚀 What You Get
+## 🚀 What You Get (Globally)
 
-### 9 Autonomous Sub-Agents
+### 10 Autonomous Sub-Agents
 AI agents that work in parallel (up to 3 simultaneously):
+
+**Development Agents:**
 - **Feature Builder** - Complete features across mobile/web/backend
 - **Bug Hunter** - Find and fix bugs autonomously
 - **Code Searcher** - Deep code analysis (auto-activated)
@@ -37,63 +48,95 @@ AI agents that work in parallel (up to 3 simultaneously):
 - **Security Scanner** - Security audits
 - **Deployment Manager** - Automated deployments
 
+**💰 THE MOST CRITICAL AGENT:**
+- **Marketing Strategist** - Revenue generation, user acquisition, GTM strategy, copywriting, pricing, growth hacking. **Because code without revenue is worthless.**
+
+### 5 MCP Servers (Cutting-Edge)
+**Model Context Protocol** - The "USB-C for AI":
+1. **Context7** 🔥 - Up-to-date documentation for any library (auto-activated)
+2. **Filesystem** - Local file access across all projects
+3. **PostgreSQL** - Direct database querying and schema inspection
+4. **GitHub** - Repository management, issues, PRs, code search
+5. **Puppeteer** - Web automation for market research & competitor analysis
+
 ### 6 Slash Commands
 - `/new-feature` - Create complete features
 - `/fix-bug` - Debug and fix issues
 - `/refactor` - Intelligent code refactoring
 - `/test` - Generate and run tests
 - `/deploy` - Deploy to staging/production
-- `/update-deps` - Update dependencies
+- `/market` - Marketing strategy, GTM, copywriting, revenue optimization
 
 ### 3 Stack Templates
 - Flutter + Riverpod mobile features
 - Next.js 15 App Router pages
 - FastAPI + SQLAlchemy endpoints
 
-### Docker-First
+### Docker-First (Always Included)
 - Dockerfiles for web (Next.js) and backend (FastAPI)
 - docker-compose.yml for local development
 - Multi-stage builds optimized for DocPloy
 - Health checks and auto-restart
 
-### VSCode Integration
-- Tasks, debug configs, recommended extensions
-- Claude Code snippets for instant productivity
+### Global CLI Commands
+```bash
+rapids-init-project <name>  # Create new project with RAPIDS
+rapids-update               # Update RAPIDS to latest version
+```
 
 ## 📦 What's Included
 
 ```
 rapids/
 ├── .claude/                      # Claude Code configuration
-│   ├── agents-config.json        # 9 sub-agents
+│   ├── agents-config.json        # 10 sub-agents (including Marketing!)
+│   ├── mcp-config.json           # 5 MCP servers configuration
 │   ├── commands/                 # 6 slash commands
 │   ├── prompts/                  # 3 stack templates
-│   ├── RAPIDS_METHOD.md          # Full documentation
+│   ├── agents/                   # Agent documentation
+│   │   └── marketing-strategist.md  # 💰 The money-maker
+│   ├── RAPIDS_METHOD.md          # Full methodology
 │   └── STACK_CONFIG.json         # Stack requirements
 ├── .vscode/                      # VSCode integration
-├── scripts/                      # Automation (init, backup, upgrade)
+├── scripts/                      # Automation scripts
 ├── web/Dockerfile                # Next.js multi-stage build
 ├── backend/Dockerfile            # FastAPI with health checks
-├── docker-compose.yml            # Local development
-└── install.sh                    # Quick installer
+├── docker-compose.yml            # Local development template
+├── install-global.sh             # Global installer (one-time)
+└── install.sh                    # Per-project installer (legacy)
 ```
 
-## 🎨 Customization
+**Global Installation Location:**
+- macOS: `~/Library/Application Support/Claude/rapids/`
+- Linux: `~/.config/claude/rapids/`
 
-After installation, edit `.claude/settings.local.json`:
+## 🎨 Usage Examples
 
-```json
-{
-  "project": {
-    "name": "YourProject",
-    "website": "https://yourproject.com"
-  },
-  "stack": {
-    "mobile": {
-      "stateManagement": "Riverpod"  // or Bloc, Provider
-    }
-  }
-}
+### Use MCP Servers in Any Prompt
+```
+"use context7 to show me the latest Next.js 15 App Router patterns"
+
+"use puppeteer to scrape competitor pricing from example.com"
+
+"use postgres to show me all tables in my database"
+```
+
+### Launch Marketing Agent (THE MONEY-MAKER)
+```
+Launch marketing-strategist agent to:
+- Create go-to-market strategy for my fitness app
+- Write landing page copy that converts
+- Analyze competitors and recommend pricing
+- Design user acquisition funnel with $1000 budget
+- Create 30-day content calendar for Twitter/X
+```
+
+### Build Feature with Parallel Agents
+```
+Launch feature-builder + test-generator + marketing-strategist in parallel to:
+- Build user authentication feature
+- Generate comprehensive tests
+- Plan launch strategy for new feature
 ```
 
 ## 📚 Documentation
@@ -129,11 +172,13 @@ After installation, edit `.claude/settings.local.json`:
 
 ## 🎯 Philosophy
 
-- **Minimalistic**: Only essential files, no bloat
-- **Stack-First**: Optimized for Flutter + Next.js + FastAPI + PostgreSQL
-- **Parallel-Ready**: Run 3 agents simultaneously
-- **Docker-First**: Always includes Dockerfiles for DocPloy
-- **Upgrade-Safe**: Preserves your customizations
+- **Global-First**: Install once, use everywhere. No per-project setup.
+- **Revenue-Focused**: Marketing agent ensures you actually make money.
+- **Cutting-Edge**: Uses latest Claude Code features (MCPs, sub-agents, parallel execution).
+- **Minimalistic**: Only essential files, no bloat.
+- **Stack-First**: Optimized for Flutter + Next.js + FastAPI + PostgreSQL + DocPloy.
+- **Parallel-Ready**: Run 3 agents simultaneously for 10x productivity.
+- **Docker-First**: Always includes Dockerfiles for production deployment.
 
 ## 📄 License
 
@@ -148,7 +193,8 @@ Built for solo developers deploying on DocPloy with:
 
 ---
 
-**Version**: 1.0
+**Version**: 2.0 (Global Installation + Marketing Agent + MCPs)
 **Stack**: Flutter • Next.js 15 • FastAPI • PostgreSQL • DocPloy
+**MCPs**: Context7 • Filesystem • PostgreSQL • GitHub • Puppeteer
 
-🌊 **Ride the RAPIDS to 10x productivity!** 🚀
+🌊 **Install once. Ship fast. Make money.** 🚀
