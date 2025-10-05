@@ -4,9 +4,9 @@
   "description": "🌊 RAPIDS - Token-optimized portable Claude Code framework with 10 AI agents, 5 MCPs, CI/CD automation, and revenue-first output styles. Ship fast, make money.",
   "type": "module",
   "bin": {
-    "rapids": "./cli/install.tsx",
-    "rapids-init": "./cli/init.tsx",
-    "rapids-update": "./cli/update.tsx"
+    "rapids": "./cli/install.js",
+    "rapids-init": "./cli/init.js",
+    "rapids-update": "./cli/update.js"
   },
   "scripts": {
     "test": "echo 'Tests coming soon' && exit 0"
