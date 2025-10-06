@@ -111,7 +111,7 @@ All agents are general-purpose type with specific roles:
 8. **security-scanner** - Scans for security vulnerabilities
 9. **deployment-manager** - Manages deployments to staging and production
 10. **marketing-strategist** - THE MOST CRITICAL: Revenue generation, user acquisition, GTM strategy
-11. **design-master** - Material Design 3 expert for creating beautiful, accessible, and adaptive UIs
+11. **design-master** - Material Design 3 expert specializing in UNIQUE, CUSTOM designs that stand out while following MD3 principles
 
 ### Stack Templates
 

@@ -1,6 +1,8 @@
-# /design - Create Material Design 3 UI
+# /design - Create UNIQUE Material Design 3 UI
 
-Creates beautiful, accessible, and adaptive UIs following Material Design 3 principles.
+Creates beautiful, accessible, adaptive UIs with UNIQUE brand personality - NOT generic cookie-cutter designs.
+
+**Philosophy**: Material Design 3 is a SYSTEM for creative expression, not a template to copy.
 
 ## Usage
 ```
@@ -25,24 +27,29 @@ Creates beautiful, accessible, and adaptive UIs following Material Design 3 prin
 
 ## Examples
 ```
-/design user-profile-card "Card displaying user avatar, name, and stats with actions"
+/design user-profile-card "Unique card with tilted layout, custom gradients, playful animations"
 ```
 
 ```
-/design app-navigation "Bottom navigation for mobile, rail for tablet, drawer for desktop"
+/design app-navigation "Custom navigation with animated indicator, unique shape language"
 ```
 
 ```
-/design color-scheme "Generate dynamic color scheme from brand color #6442d6"
+/design color-scheme "Vibrant, high-energy color scheme from #6442d6 with custom tonal palette"
+```
+
+```
+/design login-screen "Minimalist luxury design with custom typography and glassmorphism"
 ```
 
 ## Design Deliverables
-- **Color Palette**: Complete tonal palette with all color roles
-- **Components**: Detailed specs (sizes, spacing, states, colors)
-- **Layouts**: Responsive grid with breakpoints
-- **Accessibility**: Contrast ratios, touch targets, screen reader support
-- **Code**: Implementation-ready Flutter/Web code
-- **Documentation**: Design specs and usage guidelines
+- **Unique Color Palette**: Custom tonal palette expressing brand personality
+- **Custom Components**: Unique variations with creative states and interactions
+- **Creative Layouts**: Asymmetric, memorable grid systems
+- **Accessibility**: WCAG compliant WHILE being distinctive
+- **Code**: Implementation-ready Flutter/Web code with custom theming
+- **Documentation**: Design rationale and customization details
+- **Brand Identity**: Signature elements that make design instantly recognizable
 
 ## Material Design 3 Features
 - **Dynamic Color**: Personalized color schemes from user preferences
@@ -60,15 +67,18 @@ Creates beautiful, accessible, and adaptive UIs following Material Design 3 prin
 - Generates Flutter `ThemeData` and Web CSS variables
 
 ## Best Practices Applied
-✅ Accessibility-first design
-✅ Light and dark theme support
-✅ Responsive breakpoints (compact, medium, expanded)
-✅ Material Design 3 compliance
-✅ State variations (enabled, hover, focus, pressed, disabled, error)
-✅ Proper elevation hierarchy
+✅ **Uniqueness + Accessibility** (both are critical)
+✅ Light and dark themes **with distinct brand personalities**
+✅ Responsive breakpoints with **custom behavior**
+✅ Material Design 3 as **foundation, not ceiling**
+✅ **Creative state variations** beyond standard ripple
+✅ Proper elevation hierarchy with **brand-specific tints**
 ✅ Touch target sizes ≥ 48x48dp
-✅ Color contrast ratios ≥ 4.5:1 for text
+✅ Color contrast ratios ≥ 4.5:1 for text (with **brand colors**)
 ✅ Semantic structure for screen readers
+✅ **Signature interactions** users will remember
+✅ **Custom typography, shapes, and motion**
+✅ **Instantly recognizable brand identity**
 
 ## Reference
 Material Design 3: https://m3.material.io/
