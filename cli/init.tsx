@@ -1,4 +1,3 @@
-#!/usr/bin/env -S node --import tsx/esm
 import React, { useState } from 'react';
 import { render, Text, Box, Newline } from 'ink';
 import TextInput from 'ink-text-input';

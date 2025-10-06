@@ -30,7 +30,7 @@ async function buildCLI() {
       bundle: true,
       platform: 'node',
       target: 'node20',
-      format: 'cjs',
+      format: 'esm',
       outfile,
       external: [
         'ink',
@@ -46,8 +46,7 @@ async function buildCLI() {
         'cfonts'
       ],
       banner: {
-        js: `#!/usr/bin/env node
-var __dirname = __dirname || require('path').dirname(__filename);`
+        js: '#!/usr/bin/env node'
       }
     });
 

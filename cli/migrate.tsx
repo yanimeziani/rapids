@@ -1,4 +1,3 @@
-#!/usr/bin/env tsx
 import React, { useState, useEffect } from 'react';
 import { render, Box, Text } from 'ink';
 import fs from 'fs-extra';
