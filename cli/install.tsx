@@ -44,6 +44,11 @@ function App() {
 	const [dokployApiKey, setDokployApiKey] = useState('');
 
 	useEffect(() => {
+		// Don't run installation until credentials are collected
+		if (status !== 'installing') {
+			return;
+		}
+
 		let cancelled = false;
 
 		async function install() {
@@ -203,7 +208,7 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 		return () => {
 			cancelled = true;
 		};
-	}, []);
+	}, [status, dokployUrl, dokployApiKey]);
 
 	// Credential collection phase
 	if (status === 'credentials') {
