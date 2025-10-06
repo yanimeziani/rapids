@@ -76,7 +76,7 @@ export default function HeroSection() {
           >
             <Chip
               icon={<RocketLaunchIcon />}
-              label="RAPIDS v3.9.1 - Now with Migration Tool"
+              label="RAPIDS v3.9.3 - Now with rapids-clean"
               sx={{
                 backgroundColor: 'rgba(255, 107, 157, 0.15)',
                 border: '1px solid rgba(255, 107, 157, 0.3)',

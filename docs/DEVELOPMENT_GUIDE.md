@@ -1,67 +1,67 @@
-# Flowz Development Guide with Claude Code
+# RAPIDS Development Guide with Claude Code
 
-Guide complet pour développer Flowz efficacement avec l'aide de Claude Code.
+Complete guide for developing with RAPIDS and Claude Code efficiently.
 
-## 🚀 Quick Start avec Claude Code
+## 🚀 Quick Start with Claude Code
 
-### Commandes Essentielles
+### Essential Commands
 
 ```bash
-# Créer une nouvelle fonctionnalité
+# Create a new feature
 /new-feature workout-history "Track user workout history"
 
-# Corriger un bug
+# Fix a bug
 /fix-bug "Backend API returns 500 on /flows endpoint"
 
-# Refactoriser du code
+# Refactor code
 /refactor mobile/lib/features/flows/ extract-widgets
 
-# Générer des tests
+# Generate tests
 /test mobile lib/features/flows/
 
-# Déployer
+# Deploy
 /deploy staging
 ```
 
-## 🤖 Utiliser les Agents IA
+## 🤖 Using AI Agents
 
 ### 1. Code Reviewer
-Revue automatique du code avant commit:
+Automatic code review before commit:
 ```
 Review my changes for the workout feature
 ```
 
 ### 2. Performance Optimizer
-Optimiser les performances:
+Optimize performance:
 ```
 Optimize the flows screen, it's loading slowly
 ```
 
 ### 3. Security Auditor
-Audit de sécurité:
+Security audit:
 ```
 Run security audit on authentication flow
 ```
 
 ### 4. Database Migrator
-Gérer les migrations:
+Manage migrations:
 ```
 Create migration for adding workout_sessions table
 ```
 
-## 📁 Architecture du Projet
+## 📁 Project Architecture
 
 ### Mobile (Flutter)
 ```
 lib/
-├── app/                 # Configuration app
-├── core/                # Utilitaires partagés
-├── features/            # Fonctionnalités
+├── app/                 # App configuration
+├── core/                # Shared utilities
+├── features/            # Features
 │   ├── <feature>/
-│   │   ├── application/  # Logique métier
-│   │   ├── domain/       # Modèles
+│   │   ├── application/  # Business logic
+│   │   ├── domain/       # Models
 │   │   └── presentation/ # UI
-├── providers/           # Providers Riverpod
+├── providers/           # Riverpod providers
 └── routing/             # Navigation
 ```
 
@@ -69,27 +69,27 @@ lib/
 ```
 app/
 ├── <route>/
-│   ├── page.tsx         # Page principale
+│   ├── page.tsx         # Main page
 │   ├── layout.tsx       # Layout
-│   ├── loading.tsx      # État loading
-│   └── error.tsx        # Gestion erreurs
+│   ├── loading.tsx      # Loading state
+│   └── error.tsx        # Error handling
 ```
 
 ### Backend (FastAPI)
 ```
 app/
-├── api/v1/              # Routes API
-├── models/              # Modèles DB
-├── schemas/             # Validation Pydantic
-├── services/            # Logique métier
+├── api/v1/              # API routes
+├── models/              # Database models
+├── schemas/             # Pydantic validation
+├── services/            # Business logic
 └── main.py             # Application
 ```
 
-## 🛠️ Workflows Communs
+## 🛠️ Common Workflows
 
-### Ajouter une Nouvelle Fonctionnalité
+### Adding a New Feature
 
-1. **Planifier avec Claude**
+1. **Plan with Claude**
 ```
 Plan the implementation of a workout timer feature:
 - Mobile: Real-time timer with pause/resume
@@ -97,64 +97,64 @@ Plan the implementation of a workout timer feature:
 - Backend: Store workout sessions
 ```
 
-2. **Créer la structure**
+2. **Create structure**
 ```
 /new-feature workout-timer "Real-time workout timer with session tracking"
 ```
 
-3. **Implémenter itérativement**
-- Commencer par le backend (API + DB)
-- Puis le mobile (UI + logique)
-- Enfin le web (affichage)
+3. **Implement iteratively**
+- Start with backend (API + DB)
+- Then mobile (UI + logic)
+- Finally web (display)
 
-4. **Tester**
+4. **Test**
 ```
 /test mobile lib/features/workout-timer/
 /test backend app/api/v1/workout_timer.py
 ```
 
-5. **Déployer**
+5. **Deploy**
 ```
 /deploy staging
-# Tester
+# Test
 /deploy prod
 ```
 
-### Corriger un Bug
+### Fixing a Bug
 
-1. **Décrire le problème**
+1. **Describe the problem**
 ```
 /fix-bug "Mobile app crashes when selecting a flow with null exercises"
 ```
 
-2. **Claude va**:
-   - Chercher le code pertinent
-   - Analyser la cause
-   - Proposer un fix
-   - L'implémenter
-   - Tester
+2. **Claude will**:
+   - Search relevant code
+   - Analyze the cause
+   - Propose a fix
+   - Implement it
+   - Test
 
-3. **Vérifier le fix**
+3. **Verify the fix**
 ```
 Run the app and verify the fix works
 ```
 
-### Refactoriser du Code
+### Refactoring Code
 
 ```
 /refactor mobile/lib/features/flows/presentation/flows_screen.dart extract-widgets
 
-# Claude va:
-# - Identifier les widgets répétitifs
-# - Extraire en composants réutilisables
-# - Mettre à jour les imports
-# - Tester que tout fonctionne
+# Claude will:
+# - Identify repetitive widgets
+# - Extract into reusable components
+# - Update imports
+# - Test everything works
 ```
 
-## 🔍 Debugging avec Claude
+## 🔍 Debugging with Claude
 
-### Logs d'erreur
-Copier-coller directement les logs:
+### Error logs
+Copy-paste logs directly:
 ```
 Fix this error:
 [ERROR] sqlalchemy.exc.OperationalError: (psycopg2.OperationalError)
@@ -172,38 +172,38 @@ Fix this Flutter build error:
 [flutter] Error: Type 'Future<void>' can't be assigned to 'void Function()'
 ```
 
-## 📊 Bonnes Pratiques
+## 📊 Best Practices
 
-### 1. Contexte Clair
-Toujours donner du contexte:
+### 1. Clear Context
+Always provide context:
 ```
 ❌ "Fix the error"
 ✅ "Fix the database connection error in backend/app/main.py when connecting to PostgreSQL"
 ```
 
-### 2. Itérations Courtes
-Travailler par petites étapes:
+### 2. Short Iterations
+Work in small steps:
 ```
 ✅ "First, add the API endpoint for creating workouts"
 ✅ "Now connect the mobile UI to this endpoint"
 ✅ "Finally, add error handling"
 ```
 
-### 3. Utiliser les Templates
-Les prompts dans `.claude/prompts/` sont optimisés:
+### 3. Use Templates
+Prompts in `.claude/prompts/` are optimized:
 ```
 Create a new mobile feature following the mobile-feature template
 ```
 
-### 4. Tests Automatisés
-Toujours tester après changements:
+### 4. Automated Tests
+Always test after changes:
 ```
 /test mobile lib/features/workout/
 ```
 
-## 🚢 Déploiement
+## 🚢 Deployment
 
-### Checklist Pré-déploiement
+### Pre-Deployment Checklist
 ```
 Run pre-deployment checks:
 - All tests passing
@@ -212,29 +212,29 @@ Run pre-deployment checks:
 - Environment variables configured
 ```
 
-### Déploiement Staging
+### Staging Deployment
 ```
 /deploy staging
 ```
 
-### Déploiement Production
+### Production Deployment
 ```
 /deploy prod
 ```
 
-### Rollback si Nécessaire
+### Rollback if Necessary
 ```
 Rollback production to previous version
 ```
 
-## 🔐 Sécurité
+## 🔐 Security
 
-### Audit Régulier
+### Regular Audit
 ```
 Run security audit
 ```
 
-### Avant Chaque Release
+### Before Each Release
 ```
 Check for security vulnerabilities before deploying to production
 ```
@@ -257,31 +257,31 @@ Generate performance report for mobile app
 Analyze database performance and suggest optimizations
 ```
 
-## 💡 Astuces Avancées
+## 💡 Advanced Tips
 
-### 1. Recherche de Code
+### 1. Code Search
 ```
 Find all places where we handle workout session state
 ```
 
-### 2. Documentation Auto
+### 2. Auto Documentation
 ```
 Generate API documentation for all backend endpoints
 ```
 
-### 3. Migration de Code
+### 3. Code Migration
 ```
 Migrate flows_screen.dart from StatefulWidget to ConsumerWidget with Riverpod
 ```
 
-### 4. Génération de Mocks
+### 4. Mock Generation
 ```
 Generate mock data for testing workout flows
 ```
 
-## 🎯 Exemples Concrets
+## 🎯 Concrete Examples
 
-### Exemple 1: Ajouter l'Authentification
+### Example 1: Adding Authentication
 ```
 Implement Google Sign-In:
 1. Backend: JWT authentication with Google OAuth
@@ -289,7 +289,7 @@ Implement Google Sign-In:
 3. Web: Google Sign-In with session management
 ```
 
-### Exemple 2: Optimiser les Images
+### Example 2: Optimizing Images
 ```
 Optimize workout exercise images:
 - Mobile: Use cached_network_image
@@ -297,7 +297,7 @@ Optimize workout exercise images:
 - Backend: Serve optimized sizes
 ```
 
-### Exemple 3: Ajouter Analytics
+### Example 3: Adding Analytics
 ```
 Add PostHog analytics:
 - Track workout completions
@@ -307,24 +307,89 @@ Add PostHog analytics:
 
 ## 🆘 Support & Troubleshooting
 
-### Problème Général
+### General Problem
 ```
 I'm stuck with <describe issue>, help me debug and fix it
 ```
 
-### Comprendre le Code
+### Understanding Code
 ```
 Explain how the workout flow state machine works in mobile/lib/features/workout/
 ```
 
-### Améliorer la Performance
+### Improving Performance
 ```
 The mobile app is using too much memory, investigate and optimize
 ```
 
+## 🌊 RAPIDS-Specific Workflows
+
+### Migrating Existing Project
+
+```bash
+# Navigate to project root
+cd your-existing-project
+
+# Run migration (non-destructive)
+rapids-migrate
+
+# Clean up old files
+rapids-clean
+
+# Start using RAPIDS
+/update-doc system
+```
+
+**Migration automatically**:
+- Detects stack and structure
+- Creates `.claude/` config
+- Initializes `.agent/` system
+- Backs up existing `.claude/` if present
+
+See `docs/MIGRATION.md` for full details.
+
+### Using rapids-clean
+
+After migrating, clean up legacy files:
+
+```bash
+rapids-clean
+```
+
+This removes:
+- Old environment files (`.env.local`, `.env.production`, etc.)
+- Legacy documentation
+- Build artifacts and cache
+- Deprecated helper scripts
+- Old CI/CD configs
+- Migration backups
+
+See `docs/CLEAN.md` for full details.
+
+### Context Optimization with `.agent/`
+
+Use the `.agent/` documentation system to save 60-80% tokens:
+
+```bash
+# Initialize .agent/ folder
+/update-doc initialize
+
+# Create feature plan before building
+/update-doc plan workout-timer
+
+# Update architecture docs after major changes
+/update-doc system
+
+# Create SOP for recurring issues
+/update-doc sop "database-connection-timeout-fix"
+
+# Archive completed plans
+/update-doc archive workout-timer
+```
+
 ---
 
-## Commandes de Développement
+## Development Commands
 
 ### Mobile (Flutter)
 ```bash
@@ -349,7 +414,7 @@ docker compose up -d
 docker compose logs -f backend
 ```
 
-### Docker (Tout)
+### Docker (All)
 ```bash
 docker compose up -d
 docker compose ps
@@ -359,4 +424,4 @@ docker compose down
 
 ---
 
-**En résumé**: Utilisez Claude Code comme votre binôme de développement. Soyez précis, itératif, et n'hésitez pas à demander de l'aide à chaque étape !
+**Summary**: Use Claude Code as your development partner. Be precise, iterative, and don't hesitate to ask for help at every step!

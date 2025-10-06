@@ -3,8 +3,13 @@
 ## 🚀 Installation (Already Done ✅)
 ```bash
 npm install -g rapids-ai
-# or
-npx rapids-ai install
+```
+
+## 🔄 Migrating Existing Project
+```bash
+cd your-existing-project
+rapids-migrate    # Non-destructive migration
+rapids-clean      # Clean up old files (optional but recommended)
 ```
 
 ## ⚡️ Usage
@@ -87,6 +92,19 @@ Already configured in `~/.config/claude/config.json`:
 ---
 
 ## 🎯 Workflows
+
+### Migrate Existing Project:
+```bash
+1. cd your-project
+2. rapids-migrate
+   → Analyzes stack, creates .claude/ config, backs up existing config
+3. rapids-clean
+   → Removes legacy files: .env.local, build cache, old scripts, CI/CD configs
+4. /output-style ship-mode
+   → Activate revenue-first mode
+5. /update-doc system
+   → Initialize .agent/ documentation
+```
 
 ### Ship New Feature (< 2 hours):
 ```bash

@@ -7,7 +7,7 @@ title: RAPIDS Documentation
 
 **Rapid AI-Powered Development & Shipping**
 
-> Ship fast. Make money. Build with 10 AI agents, 5 MCPs, and revenue-first workflows.
+> Ship fast. Make money. Build with 11 AI agents, 7 MCPs, and revenue-first workflows.
 
 ## 📖 Documentation
 
@@ -19,12 +19,13 @@ title: RAPIDS Documentation
 ### Core Concepts
 - [RAPIDS Method](./RAPIDS_METHOD.md) - The complete methodology
 - [Development Guide](./DEVELOPMENT_GUIDE.md) - How to use RAPIDS effectively
-- [Subagents Guide](./SUBAGENTS_GUIDE.md) - Master the 10 AI agents
+- [Subagents Guide](./SUBAGENTS_GUIDE.md) - Master the 11 AI agents
 
 ### Reference
 - [Shortcuts](./shortcuts.md) - Quick commands and workflows
 - [Changelog](./CHANGELOG.md) - Version history and updates
 - [Configuration Guide](./README.md) - Advanced configuration
+- [Clean Guide](./CLEAN.md) - Cleanup utility for migrated projects
 
 ## ⚡ Quick Start
 
@@ -42,7 +43,7 @@ rapids-init
 "use context7 to get latest Next.js 15 docs"
 ```
 
-## 🤖 10 AI Agents
+## 🤖 11 AI Agents
 
 **Development Agents:**
 1. **Feature Builder** 🏗️ - Complete features across mobile/web/backend
@@ -54,17 +55,20 @@ rapids-init
 7. **DB Architect** 🗄️ - Database schema management
 8. **Security Scanner** 🔐 - Security audits
 9. **Deployment Manager** 🚀 - Automated deployments
+10. **Design Master** 🎨 - Material Design 3 expert for UNIQUE, custom designs
 
 **💰 THE MOST CRITICAL AGENT:**
-10. **Marketing Strategist** - Revenue generation, user acquisition, GTM strategy
+11. **Marketing Strategist** - Revenue generation, user acquisition, GTM strategy
 
-## 🔌 5 MCP Servers
+## 🔌 7 MCP Servers
 
 1. **Context7** 🔥 - Up-to-date documentation
 2. **Filesystem** - Local file access across all projects
 3. **PostgreSQL** - Direct database querying
 4. **GitHub** - Repository management, issues, PRs
 5. **Puppeteer** - Web automation for market research
+6. **Neon** - Serverless PostgreSQL with instant database branching
+7. **Dokploy** - Deployment platform integration (56 tools for complete automation)
 
 ## 🎯 Philosophy
 

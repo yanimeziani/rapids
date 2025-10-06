@@ -38,7 +38,7 @@ const features = [
   {
     icon: SecurityIcon,
     title: 'Zero-Risk Migration',
-    description: 'Add RAPIDS to existing projects without touching your code.',
+    description: 'rapids-migrate + rapids-clean for instant RAPIDS setup in existing projects.',
     color: '#FF6B9D',
   },
   {

@@ -1,5 +1,65 @@
 # RAPIDS Changelog
 
+## v3.9.3 - Rapids Clean Feature (2025-10-06)
+
+### 🚀 New Features
+- **rapids-clean** command - Smart cleanup utility for migrated projects
+  - Removes legacy environment files (`.env.local`, `.env.production`, etc.)
+  - Cleans build artifacts and cache directories
+  - Removes deprecated helper scripts
+  - Deletes old CI/CD configs
+  - Removes migration backups
+  - Pre-cleanup verification and size reporting
+  - Full cleanup log to `.rapids-cleanup.log`
+
+### 📚 Documentation
+- Added `docs/CLEAN.md` - Complete guide for rapids-clean utility
+- Updated all documentation to reference rapids-clean workflow
+- Added cleanup step in migration workflows
+
+### 🔧 Configuration
+- Package.json now includes `rapids-clean` bin entry
+- Build process updated to compile clean.tsx
+
+---
+
+## v3.9.2 - Build Fixes (2025-10-06)
+
+### 🐛 Bug Fixes
+- Fixed CLI build process parse errors
+- Improved ESM compatibility in build output
+- Updated esbuild configuration for proper bundling
+
+### 🔧 Infrastructure
+- Fixed npm cache path in GitHub Actions workflow
+- Added package-lock.json for CI/CD stability
+- Improved build reliability
+
+---
+
+## v3.9.1 - Migration Improvements (2025-10-06)
+
+### 🚀 Features
+- **rapids-migrate** command - Non-destructive project migration
+  - Auto-detects project stack (Next.js, FastAPI, Flutter)
+  - Identifies project structure (monorepo, multi-folder, single)
+  - Creates `.claude/` configuration without touching code
+  - Initializes `.agent/` documentation system
+  - Backs up existing `.claude/` if present
+  - 100% safe - no code modifications
+
+### 📚 Documentation
+- Added `docs/MIGRATION.md` - Complete migration guide
+- Updated documentation to include migration workflows
+- Added migration examples and troubleshooting
+
+### 🔧 Updates
+- Updated MCP count from 5 to 7 (added Neon and Dokploy)
+- Updated agent count to 11 (includes design-master)
+- Package.json now includes rapids-migrate bin entry
+
+---
+
 ## v3.5.0 - Token-Optimized Beast Mode (2025-10-04)
 
 ### 🚀 Major Features

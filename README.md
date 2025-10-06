@@ -2,7 +2,7 @@
 
 **Portable, token-optimized Claude Code framework for velocity and revenue**
 
-> Install once on any machine. Get 10 AI agents, 5 MCPs, CI/CD automation, and revenue-first workflows.
+> Install once on any machine. Get 11 AI agents, 7 MCPs, CI/CD automation, and revenue-first workflows.
 
 [![npm version](https://badge.fury.io/js/rapids-ai.svg)](https://www.npmjs.com/package/rapids-ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -18,8 +18,8 @@ npm install -g rapids-ai
 
 That's it! RAPIDS will automatically:
 - Install 11 autonomous AI agents globally
-- Configure 5 MCP servers (Context7, Filesystem, PostgreSQL, GitHub, Puppeteer)
-- Set up CLI helpers (`rapids-init`, `rapids-update`)
+- Configure 7 MCP servers (Context7, Filesystem, PostgreSQL, GitHub, Puppeteer, Neon, Dokploy)
+- Set up CLI helpers (`rapids-init`, `rapids-migrate`, `rapids-clean`)
 - Display a beautiful installation progress UI
 
 ## 🎨 Beautiful Terminal UI
@@ -52,13 +52,15 @@ AI agents that work in parallel (up to 3 simultaneously):
 **💰 THE MOST CRITICAL AGENT:**
 - **Marketing Strategist** - Revenue generation, user acquisition, GTM strategy, copywriting, pricing, growth hacking
 
-### 5 MCP Servers (Cutting-Edge)
+### 7 MCP Servers (Cutting-Edge)
 **Model Context Protocol** - The "USB-C for AI":
 1. **Context7** 🔥 - Up-to-date documentation (auto-activated)
 2. **Filesystem** - Local file access across all projects
 3. **PostgreSQL** - Direct database querying
 4. **GitHub** - Repository management, issues, PRs
 5. **Puppeteer** - Web automation for market research
+6. **Neon** - Serverless PostgreSQL with instant database branching
+7. **Dokploy** - Deployment platform integration (56 tools for complete automation)
 
 ### Stack Templates
 - Flutter + Riverpod mobile features
@@ -276,10 +278,10 @@ GitHub Actions templates included:
 
 ---
 
-**Version**: 3.5.0 (Token-Optimized Release)
+**Version**: 3.9.3
 **Stack**: Flutter • Next.js 15 • FastAPI • PostgreSQL • Docker
-**MCPs**: Context7 • Filesystem • PostgreSQL • GitHub • Puppeteer
-**New**: Output Styles • CI/CD Templates • 60% Token Savings
+**MCPs**: Context7 • Filesystem • PostgreSQL • GitHub • Puppeteer • Neon • Dokploy
+**Tools**: rapids-migrate • rapids-clean • rapids-init
 
 🌊 **Install once. Ship fast. Make money.** 🚀
 

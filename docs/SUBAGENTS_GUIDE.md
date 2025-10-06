@@ -1,30 +1,30 @@
-# 🤖 Guide des Sub-Agents Claude Code - Flowz
+# 🤖 RAPIDS Sub-Agents Guide
 
-Guide complet pour utiliser les **vrais sub-agents** de Claude Code pour un développement ultra-efficace.
+Complete guide to using **true sub-agents** in Claude Code for ultra-efficient development.
 
-## 🎯 Qu'est-ce qu'un Sub-Agent ?
+## 🎯 What is a Sub-Agent?
 
-Un sub-agent est une **instance autonome de Claude** qui peut exécuter des tâches complexes multi-étapes **en parallèle** pendant que vous continuez à travailler.
+A sub-agent is an **autonomous Claude instance** that can execute complex multi-step tasks **in parallel** while you continue working.
 
-### Différence Clé
+### Key Difference
 ```
 ❌ Documentation (.claude/agents/*.md)
-   → Juste des guides de style
-   → Pas d'exécution automatique
-   → Nécessite copier-coller
+   → Just style guides
+   → No automatic execution
+   → Requires copy-paste
 
-✅ Vrais Sub-Agents (Task tool)
-   → Exécution autonome
-   → Travail en parallèle
-   → Retours automatiques
+✅ True Sub-Agents (Task tool)
+   → Autonomous execution
+   → Parallel work
+   → Automatic returns
 ```
 
-## 🚀 Sub-Agents Disponibles pour Flowz
+## 🚀 Available Sub-Agents in RAPIDS
 
 ### 1. **Feature Builder** 🏗️
-Construit une feature complète (mobile + web + backend).
+Builds complete features (mobile + web + backend).
 
-**Utilisation:**
+**Usage:**
 ```
 Launch feature-builder agent to create user authentication:
 - Google Sign-In
@@ -33,72 +33,72 @@ Launch feature-builder agent to create user authentication:
 - Web session management
 ```
 
-**Ce qu'il fait:**
-1. Crée les endpoints backend
-2. Crée l'UI mobile Flutter
-3. Crée les pages web Next.js
-4. Génère tous les tests
-5. Met à jour la doc
+**What it does:**
+1. Creates backend endpoints
+2. Creates Flutter mobile UI
+3. Creates Next.js web pages
+4. Generates all tests
+5. Updates documentation
 
-**Quand l'utiliser:**
-- Feature complète multi-couches
-- Intégration complexe
-- Nouveau module complet
+**When to use:**
+- Complete multi-layer features
+- Complex integrations
+- New full modules
 
 ---
 
 ### 2. **Bug Hunter** 🔍
-Trouve et corrige les bugs dans toute la codebase.
+Finds and fixes bugs throughout the codebase.
 
-**Utilisation:**
+**Usage:**
 ```
 Launch bug-hunter agent to fix:
 Error: Backend returns 500 on POST /api/v1/flows
 Stack trace: [paste trace here]
 ```
 
-**Ce qu'il fait:**
-1. Recherche patterns d'erreur (Grep)
-2. Trouve fichiers liés (Glob)
-3. Lit le code pertinent
-4. Identifie la cause
-5. Implémente le fix
-6. Ajoute tests de régression
+**What it does:**
+1. Searches for error patterns (Grep)
+2. Finds related files (Glob)
+3. Reads relevant code
+4. Identifies root cause
+5. Implements fix
+6. Adds regression tests
 
-**Quand l'utiliser:**
-- Bugs complexes multi-fichiers
-- Erreurs intermittentes
-- Problèmes de performance
+**When to use:**
+- Complex multi-file bugs
+- Intermittent errors
+- Performance issues
 
 ---
 
 ### 3. **Code Searcher** 🔎
-Recherche et analyse le code (AUTO-ACTIVÉ).
+Searches and analyzes code (AUTO-ACTIVATED).
 
-**Utilisation:**
+**Usage:**
 ```
 Find all places where we handle workout session state
 Show me how authentication works
 Where is the flow state machine implemented?
 ```
 
-**Ce qu'il fait:**
-- Grep intensif pour patterns
-- Glob pour fichiers
-- Analyse de dépendances
-- Mapping de relations
+**What it does:**
+- Intensive Grep for patterns
+- Glob for files
+- Dependency analysis
+- Relationship mapping
 
-**Quand l'utiliser:**
-- Explorer code inconnu
-- Tracer implémentations
-- Comprendre architecture
+**When to use:**
+- Exploring unfamiliar code
+- Tracing implementations
+- Understanding architecture
 
 ---
 
 ### 4. **Test Generator** 🧪
-Génère des tests complets.
+Generates comprehensive tests.
 
-**Utilisation:**
+**Usage:**
 ```
 Launch test-generator agent for features/workout module:
 - Flutter widget tests
@@ -107,95 +107,95 @@ Launch test-generator agent for features/workout module:
 - E2E flow tests
 ```
 
-**Ce qu'il fait:**
-1. Analyse le code à tester
-2. Génère cas de test
-3. Crée fichiers de test
-4. Exécute les tests
-5. Rapport de coverage
+**What it does:**
+1. Analyzes code to test
+2. Generates test cases
+3. Creates test files
+4. Runs tests
+5. Coverage report
 
-**Quand l'utiliser:**
-- Nouvelle feature sans tests
-- Améliorer coverage
-- Tests de régression
+**When to use:**
+- New features without tests
+- Improving coverage
+- Regression tests
 
 ---
 
 ### 5. **Refactor Master** ♻️
-Refactoring intelligent et sûr.
+Intelligent and safe refactoring.
 
-**Utilisation:**
+**Usage:**
 ```
 Launch refactor-master agent on mobile/lib/features/flows/:
 Strategy: Extract reusable widgets and simplify complexity
 ```
 
-**Ce qu'il fait:**
-1. Comprend le code actuel
-2. Identifie opportunités
-3. Planifie les étapes
-4. Applique changements
-5. Teste après chaque étape
+**What it does:**
+1. Understands current code
+2. Identifies opportunities
+3. Plans steps
+4. Applies changes
+5. Tests after each step
 
-**Quand l'utiliser:**
-- Code smell important
-- Duplication excessive
-- Complexité élevée
+**When to use:**
+- Significant code smells
+- Excessive duplication
+- High complexity
 
 ---
 
 ### 6. **Performance Analyzer** ⚡
-Optimisation de performance.
+Performance optimization.
 
-**Utilisation:**
+**Usage:**
 ```
 Launch performance-analyzer agent on flows screen:
 Issue: Loading 100+ flows causes lag and freezes
 Analyze mobile + backend performance
 ```
 
-**Ce qu'il fait:**
-1. Profile l'app
-2. Identifie bottlenecks
-3. Propose solutions
-4. Implémente optimisations
-5. Mesure améliorations
+**What it does:**
+1. Profiles the app
+2. Identifies bottlenecks
+3. Proposes solutions
+4. Implements optimizations
+5. Measures improvements
 
-**Quand l'utiliser:**
-- Lenteur perceptible
-- Pics de mémoire
-- Queries DB lentes
+**When to use:**
+- Noticeable slowness
+- Memory spikes
+- Slow database queries
 
 ---
 
 ### 7. **DB Architect** 🗄️
-Gestion de schéma et migrations.
+Schema and migration management.
 
-**Utilisation:**
+**Usage:**
 ```
 Launch db-architect agent to:
 Add workout_analytics table with user_id, flow_id, metrics JSONB, created_at
 Generate migration with rollback
 ```
 
-**Ce qu'il fait:**
-1. Analyse schéma actuel
-2. Design nouveaux changements
-3. Crée migration Alembic
-4. Script de rollback
-5. Test local
+**What it does:**
+1. Analyzes current schema
+2. Designs new changes
+3. Creates Alembic migration
+4. Rollback script
+5. Local testing
 
-**Quand l'utiliser:**
-- Changements de schéma
-- Nouvelles tables
-- Modifications complexes
+**When to use:**
+- Schema changes
+- New tables
+- Complex modifications
 
 ---
 
 ### 8. **Security Scanner** 🔐
-Audit de sécurité complet.
+Complete security audit.
 
-**Utilisation:**
+**Usage:**
 ```
 Launch security-scanner agent for full audit:
 - Check authentication flow
@@ -204,52 +204,107 @@ Launch security-scanner agent for full audit:
 - Review API security
 ```
 
-**Ce qu'il fait:**
-1. Scan auth/authorization
-2. Check input validation
-3. Vérifie data protection
-4. Analyse dependencies
-5. Rapport avec severity
+**What it does:**
+1. Scans auth/authorization
+2. Checks input validation
+3. Verifies data protection
+4. Analyzes dependencies
+5. Report with severity
 
-**Quand l'utiliser:**
-- Avant release production
-- Après refactoring auth
-- Audit périodique
+**When to use:**
+- Before production release
+- After auth refactoring
+- Periodic audits
 
 ---
 
 ### 9. **Deployment Manager** 🚀
-Gestion des déploiements.
+Deployment management.
 
-**Utilisation:**
+**Usage:**
 ```
 Launch deployment-manager agent to deploy to staging:
 - Run all pre-checks
 - Build and push images
-- Deploy to DocPloy
+- Deploy to Dokploy
 - Verify health
 ```
 
-**Ce qu'il fait:**
+**What it does:**
 1. Pre-deployment checks
-2. Build Docker images
-3. Tag versions
-4. Deploy to DocPloy
+2. Builds Docker images
+3. Tags versions
+4. Deploys to Dokploy
 5. Health checks
 6. Monitoring
 
-**Quand l'utiliser:**
-- Déploiement staging/prod
-- Release importantes
-- Rollback nécessaire
+**When to use:**
+- Staging/prod deployments
+- Important releases
+- Rollback needed
 
 ---
 
-## 🔥 Exécution en Parallèle
+### 10. **Marketing Strategist** 💰
+THE MOST CRITICAL AGENT: Revenue generation, user acquisition, GTM strategy.
 
-Une des **forces majeures** des sub-agents : le **parallélisme**.
+**Usage:**
+```
+Launch marketing-strategist agent to:
+- Validate market for feature X
+- Create landing page copy
+- Design user acquisition funnel
+- Plan product launch campaign
+```
 
-### Exemple 1: Créer Feature Complète
+**What it does:**
+1. Market research and competitor analysis
+2. Pricing and monetization strategy
+3. Copywriting (landing pages, emails, ads)
+4. User acquisition channels
+5. Growth hacking tactics
+6. Revenue forecasting
+
+**When to use:**
+- Before building features (validate revenue potential)
+- Launching new products
+- Optimizing conversion
+- Scaling user acquisition
+- Any revenue-related decision
+
+---
+
+### 11. **Design Master** 🎨
+Material Design 3 expert for UNIQUE, CUSTOM designs.
+
+**Usage:**
+```
+Launch design-master agent to:
+- Create UNIQUE Material Design 3 color scheme with custom personality
+- Design distinctive navigation with signature interactions
+- Generate creative layouts that stand out while staying accessible
+```
+
+**What it does:**
+1. Creates custom Material Design 3 themes
+2. Designs unique brand experiences (NOT generic templates)
+3. Ensures WCAG accessibility compliance
+4. Provides responsive layouts for all devices
+5. Generates implementation-ready code
+
+**When to use:**
+- Creating distinctive brand identity
+- Designing new features with unique UI
+- Accessibility audits
+- Responsive design implementation
+
+---
+
+## 🔥 Parallel Execution
+
+One of the **major strengths** of sub-agents: **parallelism**.
+
+### Example 1: Create Complete Feature
 ```
 Launch 3 agents in parallel to create workout timer feature:
 
@@ -260,7 +315,7 @@ Agent 3 (web): Create Next.js timer display page
 Run them simultaneously and report back when all done.
 ```
 
-### Exemple 2: Tests Multi-Plateformes
+### Example 2: Multi-Platform Tests
 ```
 Run tests in parallel across all platforms:
 
@@ -271,7 +326,7 @@ Agent 3: FastAPI tests
 Report combined results.
 ```
 
-### Exemple 3: Performance Full Stack
+### Example 3: Full Stack Performance
 ```
 Analyze performance in parallel:
 
@@ -282,29 +337,42 @@ Agent 3: Backend query optimization
 Provide unified performance report.
 ```
 
-## 📋 Quand Utiliser des Sub-Agents
+### Example 4: Design + Build + Market
+```
+Launch design-master + feature-builder + marketing-strategist in parallel:
 
-### ✅ TOUJOURS utiliser pour:
-- Features touchant mobile + web + backend
-- Recherches complexes multi-fichiers
-- Refactoring >5 fichiers
-- Tests complets d'une feature
-- Analyse de performance
-- Audits de sécurité
-- Migrations de DB complexes
+Agent 1 (design): Create UNIQUE UI/UX for feature
+Agent 2 (build): Implement the feature
+Agent 3 (market): Plan launch campaign and copy
 
-### ❌ NE PAS utiliser pour:
-- Édition simple 1 fichier
-- Questions rapides
-- Lecture de documentation
-- Changements triviaux
+Deliver complete product ready to ship.
+```
 
-## 💡 Patterns d'Utilisation
+## 📋 When to Use Sub-Agents
+
+### ✅ ALWAYS use for:
+- Features touching mobile + web + backend
+- Complex multi-file searches
+- Refactoring >5 files
+- Comprehensive feature tests
+- Performance analysis
+- Security audits
+- Complex database migrations
+- Market research and GTM planning
+- Custom design systems
+
+### ❌ DO NOT use for:
+- Simple single-file edits
+- Quick questions
+- Reading documentation
+- Trivial changes
+
+## 💡 Usage Patterns
 
 ### Pattern 1: Feature Development
 ```
-Step 1: Launch feature-builder for backend + mobile
-Step 2: While building, launch code-searcher to find similar patterns
+Step 1: Launch marketing-strategist to validate revenue potential
+Step 2: Launch design-master + feature-builder in parallel (design + implement)
 Step 3: Once built, launch test-generator
 Step 4: Finally, launch deployment-manager for staging
 ```
@@ -323,15 +391,24 @@ Step 2: Launch refactor-master with strategy
 Step 3: Launch test-generator to ensure no breaks
 ```
 
+### Pattern 4: Product Launch
+```
+Step 1: Launch marketing-strategist for market validation
+Step 2: Launch design-master for UNIQUE brand identity
+Step 3: Launch feature-builder to implement validated feature
+Step 4: Launch marketing-strategist for launch campaign assets
+Step 5: Launch deployment-manager to ship
+```
+
 ## 🎯 Best Practices
 
-### 1. Soyez Précis
+### 1. Be Precise
 ```
 ❌ "Fix the bug"
 ✅ "Launch bug-hunter agent to fix: Database connection timeout in backend/app/main.py line 15"
 ```
 
-### 2. Donnez du Contexte
+### 2. Provide Context
 ```
 ✅ "Launch feature-builder with context:
    - Similar to existing flows feature
@@ -339,88 +416,91 @@ Step 3: Launch test-generator to ensure no breaks
    - Follow PRD section 2.3"
 ```
 
-### 3. Utilisez le Parallélisme
+### 3. Use Parallelism
 ```
-✅ "Launch 2 agents in parallel:
+✅ "Launch 3 agents in parallel:
    Agent 1: Build backend API
    Agent 2: Build mobile UI
-   Both for user profile feature"
+   Agent 3: Design landing page for feature
+   All for user profile feature"
 ```
 
-### 4. Vérifiez les Résultats
-Toujours vérifier ce que les agents ont fait:
+### 4. Validate Results
+Always verify what agents did:
 ```
 Show me what the feature-builder agent created
 Run tests to verify bug-hunter agent's fix
+Review the design-master's color scheme
 ```
 
 ## 🔧 Configuration
 
-Les sub-agents sont configurés dans:
-- `.claude/agents-config.json` - Configuration principale
-- Auto-détection basée sur vos phrases
+Sub-agents are configured in:
+- `.claude/subagents-config.json` - Main configuration
+- Auto-detection based on your phrases
 
-### Triggers Auto
-Certains agents s'activent automatiquement:
+### Auto Triggers
+Some agents activate automatically:
 - **code-searcher**: "find", "search", "where is"
 - **bug-hunter**: "error", "bug", "fix"
 - **feature-builder**: "create feature", "implement"
+- **marketing-strategist**: "revenue", "users", "GTM"
 
 ## 📊 Monitoring
 
-### Voir les Agents Actifs
+### View Active Agents
 ```
 Show active sub-agents
 List running agents and their progress
 ```
 
-### Logs d'Agents
+### Agent Logs
 ```
 Show logs from feature-builder agent
 Get progress report from deployment-manager
 ```
 
-## 🚨 Dépannage
+## 🚨 Troubleshooting
 
-### Agent Ne Répond Pas
+### Agent Not Responding
 ```
 Check status of bug-hunter agent
 Cancel and restart deployment-manager
 ```
 
-### Résultats Inattendus
+### Unexpected Results
 ```
 Explain what the refactor-master agent changed
 Review test-generator agent's test cases
 ```
 
-## 🎓 Apprentissage
+## 🎓 Learning Path
 
-### Commencer Simple
+### Start Simple
 ```
-# Jour 1: Un seul agent
+# Day 1: Single agent
 Launch code-searcher to find all API endpoints
 
-# Jour 2: Agent complexe
+# Day 2: Complex agent
 Launch feature-builder for simple settings page
 
-# Jour 3: Parallélisme
+# Day 3: Parallelism
 Launch mobile + backend agents in parallel for new feature
 ```
 
-### Exemples Progressifs
+### Progressive Examples
 
-#### Niveau 1: Recherche
+#### Level 1: Search
 ```
 Find all files handling user authentication
 ```
 
-#### Niveau 2: Feature Simple
+#### Level 2: Simple Feature
 ```
 Launch feature-builder to add user preferences table and API
 ```
 
-#### Niveau 3: Feature Complète
+#### Level 3: Complete Feature
 ```
 Launch 3 agents in parallel to build workout analytics:
 - Backend: Analytics API + DB schema
@@ -428,25 +508,33 @@ Launch 3 agents in parallel to build workout analytics:
 - Web: Dashboard with Recharts
 ```
 
-#### Niveau 4: Workflow Complet
+#### Level 4: Full Workflow
 ```
-1. Launch feature-builder for analytics
-2. Launch test-generator after build
-3. Launch security-scanner before deploy
-4. Launch deployment-manager to staging
+1. Launch marketing-strategist to validate revenue potential
+2. Launch design-master for UNIQUE design system
+3. Launch feature-builder for implementation
+4. Launch test-generator after build
+5. Launch security-scanner before deploy
+6. Launch deployment-manager to staging
+7. Launch marketing-strategist for launch assets
 ```
 
 ---
 
 ## 🎉 Conclusion
 
-Les sub-agents transforment votre développement solo en **équipe virtuelle**:
+Sub-agents transform your solo development into a **virtual team**:
 
-- 🏗️ **Feature Builder** = Votre développeur full-stack
-- 🔍 **Bug Hunter** = Votre débuggeur expert
-- 🧪 **Test Generator** = Votre QA engineer
-- ⚡ **Performance Analyzer** = Votre optimization specialist
-- 🔐 **Security Scanner** = Votre security expert
-- 🚀 **Deployment Manager** = Votre DevOps engineer
+- 🏗️ **Feature Builder** = Full-stack developer
+- 🔍 **Bug Hunter** = Expert debugger
+- 🧪 **Test Generator** = QA engineer
+- ⚡ **Performance Analyzer** = Optimization specialist
+- 🔐 **Security Scanner** = Security expert
+- 🚀 **Deployment Manager** = DevOps engineer
+- 💰 **Marketing Strategist** = Growth/marketing lead
+- 🎨 **Design Master** = Brand designer/UX expert
+- 🗄️ **DB Architect** = Database specialist
+- ♻️ **Refactor Master** = Code quality engineer
+- 🔎 **Code Searcher** = Research analyst
 
-**Utilisez-les massivement pour 10x votre productivité!** 🚀
+**Use them massively to 10x your productivity!** 🚀
