@@ -55,7 +55,7 @@ rapids
 ## Architecture
 
 ### CLI Structure
-The package has three main CLI commands built with Ink (React for terminals):
+The package has four main CLI commands built with Ink (React for terminals):
 
 1. **`cli/install.tsx`** - Main installer (runs on `npm install -g`)
    - Detects environment (macOS only currently)
@@ -71,7 +71,15 @@ The package has three main CLI commands built with Ink (React for terminals):
    - Stack preset selection (Full Stack, Mobile Only, Web+Backend, Backend Only)
    - Generates project structure with appropriate Dockerfiles
 
-3. **`cli/update.tsx`** - Update mechanism
+3. **`cli/migrate.tsx`** - Existing project migration (non-destructive)
+   - Analyzes project structure automatically
+   - Detects tech stack (Next.js, FastAPI, Flutter)
+   - Identifies monorepo/multi-folder/single structure
+   - Creates `.claude/` configuration without touching code
+   - Initializes `.agent/` documentation system
+   - Creates backup if `.claude/` already exists
+
+4. **`cli/update.tsx`** - Update mechanism
    - Checks for latest version
    - Preserves user customizations
    - Re-runs installation
@@ -222,6 +230,20 @@ RAPIDS enforces Docker for all deployments to DocPloy:
 - No Docker required (native mobile apps)
 
 ## Common Workflows
+
+### Migrating Existing Project
+
+1. Navigate to project root
+2. Run `rapids-migrate`
+3. Migration automatically:
+   - Detects stack and structure
+   - Creates `.claude/` config
+   - Initializes `.agent/` system
+   - Backs up existing `.claude/` if present
+4. No code is modified (100% safe)
+5. Continue with `/update-doc system` in Claude Code
+
+See `docs/MIGRATION.md` for full details.
 
 ### Adding a New Agent
 1. Edit `.claude/subagents-config.json`

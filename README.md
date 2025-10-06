@@ -72,6 +72,22 @@ AI agents that work in parallel (up to 3 simultaneously):
 
 ## 📦 Usage
 
+### Migrate Existing Project (Non-Destructive)
+
+```bash
+cd your-existing-project
+rapids-migrate
+```
+
+**Zero risk** - Analyzes and adds RAPIDS without touching your code:
+- Auto-detects stack (Next.js, FastAPI, Flutter)
+- Identifies project structure (monorepo, multi-folder, single)
+- Creates `.claude/` configuration
+- Initializes `.agent/` documentation system
+- Preserves all existing files
+
+[Read full migration guide →](./docs/MIGRATION.md)
+
 ### Create New Project (Interactive)
 
 ```bash
