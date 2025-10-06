@@ -85,6 +85,23 @@
         "Configure environment variables",
         "Manage databases and domains"
       ]
+    },
+    "neon": {
+      "command": "npx",
+      "args": ["-y", "@neondatabase/mcp-server-neon"],
+      "description": "Neon serverless PostgreSQL database management and operations",
+      "enabled": true,
+      "autoActivate": false,
+      "env": {
+        "NEON_API_KEY": ""
+      },
+      "useCases": [
+        "Create and manage Neon databases",
+        "Query serverless PostgreSQL instances",
+        "Branch databases for development",
+        "Monitor database performance",
+        "Manage connection strings and credentials"
+      ]
     }
   },
   "integration": {

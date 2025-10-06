@@ -28,7 +28,8 @@ const MCPs = [
 	{ name: 'PostgreSQL', package: '@modelcontextprotocol/server-postgres' },
 	{ name: 'GitHub', package: '@modelcontextprotocol/server-github' },
 	{ name: 'Puppeteer', package: '@modelcontextprotocol/server-puppeteer' },
-	{ name: 'Dokploy', package: '@ahdev/dokploy-mcp' }
+	{ name: 'Dokploy', package: '@ahdev/dokploy-mcp' },
+	{ name: 'Neon', package: '@neondatabase/mcp-server-neon' }
 ];
 
 function App() {
@@ -39,9 +40,12 @@ function App() {
 	const [stats, setStats] = useState({ agents: 0, commands: 0, templates: 0 });
 
 	// Dokploy credentials
-	const [credentialPhase, setCredentialPhase] = useState('url'); // 'url' | 'apikey' | 'done'
+	const [credentialPhase, setCredentialPhase] = useState('dokploy-url'); // 'dokploy-url' | 'dokploy-apikey' | 'neon-apikey' | 'done'
 	const [dokployUrl, setDokployUrl] = useState('');
 	const [dokployApiKey, setDokployApiKey] = useState('');
+
+	// Neon credentials
+	const [neonApiKey, setNeonApiKey] = useState('');
 
 	useEffect(() => {
 		// Don't run installation until credentials are collected
@@ -168,6 +172,13 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 					}
 				}
 
+				// Update Neon credentials if provided
+				if (neonApiKey) {
+					if (mcpConfig.mcpServers.neon) {
+						mcpConfig.mcpServers.neon.env.NEON_API_KEY = neonApiKey;
+					}
+				}
+
 				// Merge with existing config if it exists
 				let finalMcpConfig = mcpConfig;
 				if (await fs.pathExists(userMcpConfig)) {
@@ -208,7 +219,7 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 		return () => {
 			cancelled = true;
 		};
-	}, [status, dokployUrl, dokployApiKey]);
+	}, [status, dokployUrl, dokployApiKey, neonApiKey]);
 
 	// Credential collection phase
 	if (status === 'credentials') {
@@ -217,19 +228,19 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 				<BigText text="RAPIDS" colors={['cyan', 'magenta']} />
 				<Newline />
 				<Text bold color="cyan">
-					🔐 Dokploy MCP Configuration
+					🔐 MCP Server Configuration
 				</Text>
 				<Newline />
 				<Box flexDirection="column" borderStyle="round" borderColor="cyan" padding={1}>
 					<Text dimColor>
-						RAPIDS includes the Dokploy MCP server for deployment management.
+						RAPIDS includes Dokploy and Neon MCP servers.
 					</Text>
 					<Text dimColor>
-						You can configure it now or skip and add credentials later to ~/.claude.json
+						You can configure them now or skip and add credentials later to ~/.claude.json
 					</Text>
 				</Box>
 				<Newline />
-				{credentialPhase === 'url' && (
+				{credentialPhase === 'dokploy-url' && (
 					<Box flexDirection="column">
 						<Text bold>
 							Enter your Dokploy API URL (e.g., https://your-server.com/api):
@@ -240,12 +251,12 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 							<TextInput
 								value={dokployUrl}
 								onChange={setDokployUrl}
-								onSubmit={() => setCredentialPhase('apikey')}
+								onSubmit={() => setCredentialPhase('dokploy-apikey')}
 							/>
 						</Box>
 					</Box>
 				)}
-				{credentialPhase === 'apikey' && (
+				{credentialPhase === 'dokploy-apikey' && (
 					<Box flexDirection="column">
 						<Text bold>
 							Enter your Dokploy API Key:
@@ -256,6 +267,24 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 							<TextInput
 								value={dokployApiKey}
 								onChange={setDokployApiKey}
+								onSubmit={() => setCredentialPhase('neon-apikey')}
+								mask="*"
+							/>
+						</Box>
+					</Box>
+				)}
+				{credentialPhase === 'neon-apikey' && (
+					<Box flexDirection="column">
+						<Text bold>
+							Enter your Neon API Key:
+						</Text>
+						<Text dimColor>Press Enter to skip</Text>
+						<Text dimColor color="blue">Get your API key from: console.neon.tech/app/settings/api-keys</Text>
+						<Box marginTop={1}>
+							<Text color="cyan">▶ </Text>
+							<TextInput
+								value={neonApiKey}
+								onChange={setNeonApiKey}
 								onSubmit={() => {
 									setCredentialPhase('done');
 									setStatus('installing');
@@ -300,7 +329,7 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 					<Text>
 						✅ {stats.agents} Autonomous Sub-Agents (including Marketing Strategist)
 					</Text>
-					<Text>✅ {installedMCPs.length}/6 MCP Servers Ready</Text>
+					<Text>✅ {installedMCPs.length}/7 MCP Servers Ready</Text>
 					<Text>
 						{'   '}
 						{installedMCPs.map(name => `• ${name}`).join('  ')}
@@ -358,7 +387,7 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 							<Text color={idx === currentStep ? 'cyan' : idx < currentStep ? 'green' : 'gray'}>
 								{s.name}
 								{idx === currentStep && s.id === 'mcps' && installedMCPs.length > 0 && (
-									<Text dimColor> ({installedMCPs.length}/6)</Text>
+									<Text dimColor> ({installedMCPs.length}/7)</Text>
 								)}
 							</Text>
 						</Text>

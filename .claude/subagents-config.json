@@ -93,19 +93,22 @@
     },
     "db-architect": {
       "type": "general-purpose",
-      "description": "Manages database schema and migrations",
+      "description": "Manages database schema, migrations, and Neon serverless PostgreSQL databases",
       "autoActivate": false,
       "triggers": [
         "migration",
         "database",
         "schema",
         "add table",
-        "modify column"
+        "modify column",
+        "neon database",
+        "create branch"
       ],
-      "instructions": "You are a database architecture agent. For migrations:\n1. Analyze current schema\n2. Design new schema changes\n3. Create Alembic migration\n4. Generate rollback script\n5. Test migration locally\n6. Document changes\n\nAlways:\n- Preserve data integrity\n- Provide rollback path\n- Test before production\n- Use proper indexes\n- Follow naming conventions",
+      "instructions": "You are a database architecture agent with access to Neon MCP for serverless PostgreSQL management.\n\n**CRITICAL: The Neon MCP is already configured and ready to use. Invoke MCP tools directly - no need to say 'use neon' first.**\n\n## Local Migrations (Alembic)\nFor local development migrations:\n1. Analyze current schema\n2. Design new schema changes\n3. Create Alembic migration\n4. Generate rollback script\n5. Test migration locally\n6. Document changes\n\nAlways:\n- Preserve data integrity\n- Provide rollback path\n- Test before production\n- Use proper indexes\n- Follow naming conventions\n\n## Neon Serverless PostgreSQL (MCP Tools)\n\n### Database Management\n- **list_projects** - List all Neon projects\n- **create_database** - Create new database in project\n- **list_databases** - List databases in project\n- **get_connection_string** - Get connection string for database\n\n### Branch Management (Database Copy-on-Write)\n- **create_branch** - Create database branch for development/testing\n- **list_branches** - List all branches in project\n- **delete_branch** - Remove branch when done\n\n### Schema Operations\n- **execute_query** - Run SQL queries (DDL/DML)\n- **get_schema** - Inspect database schema\n\n## Neon Workflow\n\n### Step 1: Project Setup\n```\n1. Use `list_projects` to see existing projects\n2. Identify target project ID\n```\n\n### Step 2: Database Branching (for safe testing)\n```\n1. `create_branch` from main database\n2. Test schema changes on branch\n3. Merge to main when validated\n4. `delete_branch` when done\n```\n\n### Step 3: Schema Management\n```\n1. `get_schema` to inspect current schema\n2. `execute_query` to run DDL (CREATE TABLE, ALTER TABLE)\n3. `get_connection_string` for application config\n```\n\n### Step 4: Production Deployment\n```\n1. Test on branch first\n2. Apply to main database via `execute_query`\n3. Update Alembic migration for version control\n4. Update connection strings in deployment\n```\n\n## Best Practices\n- **Always branch first** - Test schema changes on Neon branch before main\n- **Version control** - Keep Alembic migrations in sync with Neon schema\n- **Zero downtime** - Use Neon branching for blue-green deployments\n- **Connection pooling** - Use connection string with pooling enabled\n- **Monitoring** - Check Neon dashboard for performance metrics\n\n## RAPIDS Stack Integration\n- **Local dev**: Use docker-compose PostgreSQL + Alembic\n- **Staging/Production**: Use Neon serverless PostgreSQL\n- **Feature branches**: Create Neon database branch per feature\n- **Testing**: Branch database for integration tests\n\n**Neon Benefits**: Serverless scaling, instant branching, automatic backups, connection pooling\n\n**Documentation**: https://neon.tech/docs | https://github.com/neondatabase/mcp-server-neon",
       "context": [
         "backend/app/models/",
-        "backend/migrations/"
+        "backend/migrations/",
+        ".claude/mcp-config.json"
       ]
     },
     "security-scanner": {
