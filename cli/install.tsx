@@ -40,12 +40,62 @@ function App() {
 	const [stats, setStats] = useState({ agents: 0, commands: 0, templates: 0 });
 
 	// Dokploy credentials
-	const [credentialPhase, setCredentialPhase] = useState('dokploy-url'); // 'dokploy-url' | 'dokploy-apikey' | 'neon-apikey' | 'done'
+	const [credentialPhase, setCredentialPhase] = useState('dokploy-url'); // 'dokploy-url' | 'dokploy-apikey' | 'test-dokploy' | 'neon-apikey' | 'test-neon' | 'done'
 	const [dokployUrl, setDokployUrl] = useState('');
 	const [dokployApiKey, setDokployApiKey] = useState('');
 
 	// Neon credentials
 	const [neonApiKey, setNeonApiKey] = useState('');
+
+	// Test status
+	const [testingMcp, setTestingMcp] = useState(false);
+	const [testResult, setTestResult] = useState(null);
+
+	// Test MCP connection
+	async function testMcpConnection(mcpType, url, apiKey) {
+		setTestingMcp(true);
+		setTestResult(null);
+
+		try {
+			if (mcpType === 'dokploy') {
+				// Test Dokploy connection
+				const response = await fetch(`${url}/api/health`, {
+					headers: {
+						'Authorization': `Bearer ${apiKey}`
+					}
+				});
+
+				if (!response.ok) {
+					throw new Error('Invalid credentials or unreachable server');
+				}
+
+				setTestResult({ success: true, message: 'Dokploy connection successful!' });
+				setTimeout(() => setCredentialPhase('neon-apikey'), 1500);
+			} else if (mcpType === 'neon') {
+				// Test Neon connection
+				const response = await fetch('https://console.neon.tech/api/v2/projects', {
+					headers: {
+						'Authorization': `Bearer ${apiKey}`,
+						'Accept': 'application/json'
+					}
+				});
+
+				if (!response.ok) {
+					throw new Error('Invalid Neon API key');
+				}
+
+				setTestResult({ success: true, message: 'Neon connection successful!' });
+				setTimeout(() => {
+					setCredentialPhase('done');
+					setStatus('installing');
+				}, 1500);
+			}
+		} catch (err) {
+			setTestResult({ success: false, message: err.message });
+		} finally {
+			setTestingMcp(false);
+		}
+	}
 
 	useEffect(() => {
 		// Don't run installation until credentials are collected
@@ -267,10 +317,40 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 							<TextInput
 								value={dokployApiKey}
 								onChange={setDokployApiKey}
-								onSubmit={() => setCredentialPhase('neon-apikey')}
+								onSubmit={() => {
+									if (dokployUrl && dokployApiKey) {
+										setCredentialPhase('test-dokploy');
+										testMcpConnection('dokploy', dokployUrl, dokployApiKey);
+									} else {
+										setCredentialPhase('neon-apikey');
+									}
+								}}
 								mask="*"
 							/>
 						</Box>
+					</Box>
+				)}
+				{credentialPhase === 'test-dokploy' && (
+					<Box flexDirection="column">
+						<Text bold color="yellow">
+							{testingMcp ? '🔄 Testing Dokploy connection...' : ''}
+						</Text>
+						{testResult && (
+							<Box marginTop={1}>
+								<Text color={testResult.success ? 'green' : 'red'}>
+									{testResult.success ? '✅' : '❌'} {testResult.message}
+								</Text>
+							</Box>
+						)}
+						{testResult && !testResult.success && (
+							<Box marginTop={1}>
+								<Text dimColor>Press Enter to retry or skip</Text>
+								<TextInput
+									value=""
+									onSubmit={() => setCredentialPhase('dokploy-url')}
+								/>
+							</Box>
+						)}
 					</Box>
 				)}
 				{credentialPhase === 'neon-apikey' && (
@@ -286,12 +366,40 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 								value={neonApiKey}
 								onChange={setNeonApiKey}
 								onSubmit={() => {
-									setCredentialPhase('done');
-									setStatus('installing');
+									if (neonApiKey) {
+										setCredentialPhase('test-neon');
+										testMcpConnection('neon', null, neonApiKey);
+									} else {
+										setCredentialPhase('done');
+										setStatus('installing');
+									}
 								}}
 								mask="*"
 							/>
 						</Box>
+					</Box>
+				)}
+				{credentialPhase === 'test-neon' && (
+					<Box flexDirection="column">
+						<Text bold color="yellow">
+							{testingMcp ? '🔄 Testing Neon connection...' : ''}
+						</Text>
+						{testResult && (
+							<Box marginTop={1}>
+								<Text color={testResult.success ? 'green' : 'red'}>
+									{testResult.success ? '✅' : '❌'} {testResult.message}
+								</Text>
+							</Box>
+						)}
+						{testResult && !testResult.success && (
+							<Box marginTop={1}>
+								<Text dimColor>Press Enter to retry or skip</Text>
+								<TextInput
+									value=""
+									onSubmit={() => setCredentialPhase('neon-apikey')}
+								/>
+							</Box>
+						)}
 					</Box>
 				)}
 			</Box>
