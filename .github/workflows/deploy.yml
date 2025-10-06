@@ -25,12 +25,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "rapids-landing/package-lock.json"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        run: cd rapids-landing && npm ci
+        run: npm ci
+        working-directory: ./rapids-landing
 
       - name: Build with Next.js
         run: cd rapids-landing && npm run build
