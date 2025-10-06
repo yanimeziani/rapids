@@ -1,6 +1,6 @@
 {
   "name": "rapids-ai",
-  "version": "3.9.3",
+  "version": "4.0.0-alpha.1",
   "description": "🌊 RAPIDS - Portable Claude Code framework with 11 AI agents (including Material Design 3 expert), 7 MCPs, CI/CD automation, and revenue-first workflows. Token-optimized, ship fast, make money. Documentation: https://yanimeziani.github.io/rapids/",
   "type": "module",
   "bin": {
@@ -37,6 +37,7 @@
   "homepage": "https://yanimeziani.github.io/rapids/",
   "dependencies": {
     "chalk": "^5.3.0",
+    "commander": "^12.1.0",
     "conf": "^13.0.1",
     "execa": "^9.5.2",
     "fs-extra": "^11.2.0",

@@ -20,12 +20,23 @@ test/
 # Docs
 docs/
 
-# Build artifacts
-dist/
+# Source files (built to dist/)
+src/
+cli/
 scripts/
+
+# TypeScript config
+tsconfig.json
+tsconfig.build.json
+
+# Build artifacts (only include dist in package)
+*.tsbuildinfo
+
+# Config templates (copied during installation)
+config/
 
 # Include essential files
 !README.md
 !CLAUDE.md
 !.claude/
-!cli/
+!dist/

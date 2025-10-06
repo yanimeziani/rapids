@@ -1,0 +1,117 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod:*)",
+      "Bash(./scripts/check-setup.sh:*)",
+      "Bash(./scripts/rapids-package.sh:*)",
+      "Read(//Volumes/Seagate/**)",
+      "Bash(zip:*)",
+      "Bash(npm whoami:*)",
+      "Bash(npm publish:*)",
+      "WebFetch(domain:claudelog.com)",
+      "Bash(test:*)",
+      "Bash(find:*)",
+      "Bash(npm pack:*)",
+      "Bash(npm test)",
+      "Bash(npm run build:*)",
+      "Bash(node:*)",
+      "Bash(timeout:*)",
+      "Bash(echo \"Exit code: $?\")",
+      "Read(//Users/yanimeziani/.config/**)",
+      "Bash(./cli/install.tsx)",
+      "Read(//Users/yanimeziani/.claude/**)",
+      "Bash(npm run:*)",
+      "Bash(tsx:*)",
+      "Bash(npx tsx:*)",
+      "Bash(tree:*)",
+      "Bash(npm outdated:*)",
+      "Bash(mv:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(npm link:*)",
+      "Bash(rapids)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh repo view:*)",
+      "Read(//Users/yanimeziani/.npm/_logs/**)",
+      "Bash(npm version:*)",
+      "Bash(rapids:*)",
+      "Bash(npx rapids-ai:*)",
+      "Bash(npm view:*)",
+      "Bash(git log:*)",
+      "WebFetch(domain:m3.material.io)",
+      "WebSearch",
+      "Bash(git pull:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(cat:*)",
+      "Read(//Users/yanimeziani/**)"
+    ]
+  },
+  "project": {
+    "name": "Flowz",
+    "version": "1.0.0",
+    "description": "AI-Powered Fitness Platform",
+    "repository": "https://github.com/yourusername/flowz",
+    "website": "https://flowz.fit",
+    "deployment": {
+      "staging": "https://staging.flowz.fit",
+      "production": "https://flowz.fit",
+      "docploy": "https://docploy.meziani.org"
+    }
+  },
+  "stack": {
+    "mobile": {
+      "framework": "Flutter",
+      "version": "3.24+",
+      "stateManagement": "Riverpod",
+      "routing": "Go Router"
+    },
+    "web": {
+      "framework": "Next.js",
+      "version": "15.5.4",
+      "runtime": "React 18",
+      "styling": "CSS-in-JS"
+    },
+    "backend": {
+      "framework": "FastAPI",
+      "language": "Python 3.12+",
+      "database": "PostgreSQL 16",
+      "orm": "SQLAlchemy"
+    },
+    "infrastructure": {
+      "containerization": "Docker Compose",
+      "ci_cd": "GitHub Actions",
+      "hosting": "DocPloy"
+    }
+  },
+  "ports": {
+    "backend": 8001,
+    "web": 3000,
+    "database": 5433
+  },
+  "ai_agents": {
+    "code_reviewer": {
+      "enabled": true,
+      "auto_review_on_commit": false
+    },
+    "performance_optimizer": {
+      "enabled": true,
+      "auto_analyze": false
+    },
+    "security_auditor": {
+      "enabled": true,
+      "auto_scan": false
+    },
+    "db_migrator": {
+      "enabled": true,
+      "auto_backup": true
+    }
+  },
+  "development": {
+    "auto_format": true,
+    "auto_save": true,
+    "lint_on_save": true,
+    "test_on_change": false
+  }
+}

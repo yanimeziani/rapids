@@ -6,6 +6,9 @@ package-lock.json
 dist/
 *.tsbuildinfo
 
+# Package tarballs
+*.tgz
+
 # OS
 .DS_Store
 *.swp
