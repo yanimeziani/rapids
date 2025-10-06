@@ -152,13 +152,13 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 
 				await new Promise(resolve => setTimeout(resolve, STEPS[1].duration));
 
-				// Step 3: Setup MCPs - install to user ~/.claude/.mcp.json
+				// Step 3: Setup MCPs - install to global ~/.claude.json
 				if (cancelled) return;
 				setCurrentStep(2);
 
-				// Copy MCP config to user-level .mcp.json
+				// Copy MCP config to user-level ~/.claude.json (global scope)
 				const mcpConfig = await fs.readJSON(path.join(sourceClaudeDir, 'mcp-config.json'));
-				const userMcpConfig = path.join(claudeUserDir, '.mcp.json');
+				const userMcpConfig = path.join(os.homedir(), '.claude.json');
 
 				// Update Dokploy credentials if provided
 				if (dokployUrl || dokployApiKey) {
@@ -225,7 +225,7 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 						RAPIDS includes the Dokploy MCP server for deployment management.
 					</Text>
 					<Text dimColor>
-						You can configure it now or skip and add credentials later to ~/.claude/.mcp.json
+						You can configure it now or skip and add credentials later to ~/.claude.json
 					</Text>
 				</Box>
 				<Newline />
