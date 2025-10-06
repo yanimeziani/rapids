@@ -355,3 +355,4 @@ The marketing-strategist agent is THE MOST CRITICAL because:
 - Marketing and distribution are harder than coding
 
 Always validate market demand before building.
+- This project's documentation is in @rapids-landing/ only no markdown exept readme.

@@ -58,7 +58,7 @@ export default function GettingStartedPage() {
               color: 'text.primary',
             }}
           >
-            That's it! RAPIDS will automatically install 11 AI agents, 6 MCP servers, and all configuration globally.
+            That's it! RAPIDS will automatically install 11 AI agents, 7 MCP servers, and all configuration globally.
           </Alert>
         </Box>
 
@@ -136,9 +136,11 @@ export default function GettingStartedPage() {
               cd your-project
               <br />
               rapids-migrate
+              <br />
+              rapids-clean
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              Zero-risk migration tool that adds RAPIDS without touching your code.
+              Zero-risk migration adds RAPIDS without touching code. Clean removes legacy files.
             </Typography>
           </Paper>
           <Button

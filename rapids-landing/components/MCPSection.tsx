@@ -43,8 +43,14 @@ const mcpServers = [
   },
   {
     icon: CloudIcon,
+    name: 'Neon',
+    description: 'Serverless PostgreSQL with instant branching',
+    color: '#6B5B95',
+  },
+  {
+    icon: CloudIcon,
     name: 'Dokploy',
-    description: 'Deployment platform integration',
+    description: 'Deployment platform (56 tools)',
     color: '#C44569',
   },
 ];
@@ -75,7 +81,7 @@ export default function MCPSection() {
                 fontSize: { xs: '2rem', md: '3.5rem' },
               }}
             >
-              <span className="gradient-text">6 MCP Servers</span>
+              <span className="gradient-text">7 MCP Servers</span>
             </Typography>
             <Typography
               variant="h6"
