@@ -24,3 +24,4 @@ rapids-backup-*/
 # Testing
 .nyc_output/
 coverage/
+.vercel
