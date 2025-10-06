@@ -67,6 +67,24 @@
         "Screenshot competitor UIs",
         "Test web deployments"
       ]
+    },
+    "dokploy": {
+      "command": "npx",
+      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "description": "Dokploy deployment platform integration for managing applications and services",
+      "enabled": true,
+      "autoActivate": false,
+      "env": {
+        "DOKPLOY_URL": "",
+        "DOKPLOY_API_KEY": ""
+      },
+      "useCases": [
+        "Deploy applications to Dokploy",
+        "Manage Docker containers and services",
+        "Monitor deployment status",
+        "Configure environment variables",
+        "Manage databases and domains"
+      ]
     }
   },
   "integration": {
@@ -76,7 +94,7 @@
   },
   "notes": {
     "setup": "MCPs are installed globally and available to all projects",
-    "authentication": "Set GITHUB_PERSONAL_ACCESS_TOKEN in environment for GitHub MCP",
+    "authentication": "Set GITHUB_PERSONAL_ACCESS_TOKEN for GitHub MCP and DOKPLOY_URL + DOKPLOY_API_KEY for Dokploy MCP",
     "customization": "Override per project by creating .claude/mcp-config.local.json"
   }
 }

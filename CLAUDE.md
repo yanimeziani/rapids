@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-RAPIDS is a global npm package that installs AI-powered development tools for Claude Code. It provides 10 autonomous sub-agents, 5 MCP servers, slash commands, and stack templates optimized for Flutter, Next.js 15, FastAPI, PostgreSQL, and DocPloy deployment.
+RAPIDS is a global npm package that installs AI-powered development tools for Claude Code. It provides 11 autonomous sub-agents, 6 MCP servers, slash commands, and stack templates optimized for Flutter, Next.js 15, FastAPI, PostgreSQL, and Dokploy deployment.
 
 **Key Philosophy**: Ship fast, make money. Token-optimized workflows for solo developers.
 
@@ -256,12 +256,13 @@ rapids/
 CLI dependencies are marked as external in esbuild to reduce bundle size. They must be listed in `package.json` dependencies (not devDependencies).
 
 ### MCP Servers
-Five MCP servers are pre-configured:
+Six MCP servers are pre-configured:
 1. **@upstash/context7-mcp** - Up-to-date documentation (auto-activated)
 2. **@modelcontextprotocol/server-filesystem** - Local file access
 3. **@modelcontextprotocol/server-postgres** - Database queries
 4. **@modelcontextprotocol/server-github** - Repository management
 5. **@modelcontextprotocol/server-puppeteer** - Web automation
+6. **@ahdev/dokploy-mcp** - Dokploy deployment platform integration (requires DOKPLOY_URL and DOKPLOY_API_KEY)
 
 ### Output Styles
 Two custom output styles in `.claude/output-styles/`:

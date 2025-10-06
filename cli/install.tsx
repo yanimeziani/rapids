@@ -1,6 +1,7 @@
 #!/usr/bin/env -S node --import tsx/esm
 import React, { useState, useEffect } from 'react';
 import { render, Text, Box, Newline } from 'ink';
+import TextInput from 'ink-text-input';
 import Spinner from 'ink-spinner';
 import Gradient from 'ink-gradient';
 import BigText from 'ink-big-text';
@@ -26,15 +27,21 @@ const MCPs = [
 	{ name: 'Filesystem', package: '@modelcontextprotocol/server-filesystem' },
 	{ name: 'PostgreSQL', package: '@modelcontextprotocol/server-postgres' },
 	{ name: 'GitHub', package: '@modelcontextprotocol/server-github' },
-	{ name: 'Puppeteer', package: '@modelcontextprotocol/server-puppeteer' }
+	{ name: 'Puppeteer', package: '@modelcontextprotocol/server-puppeteer' },
+	{ name: 'Dokploy', package: '@ahdev/dokploy-mcp' }
 ];
 
 function App() {
 	const [currentStep, setCurrentStep] = useState(0);
-	const [status, setStatus] = useState('installing');
+	const [status, setStatus] = useState('credentials'); // Start with credential collection
 	const [error, setError] = useState(null);
 	const [installedMCPs, setInstalledMCPs] = useState([]);
 	const [stats, setStats] = useState({ agents: 0, commands: 0, templates: 0 });
+
+	// Dokploy credentials
+	const [credentialPhase, setCredentialPhase] = useState('url'); // 'url' | 'apikey' | 'done'
+	const [dokployUrl, setDokployUrl] = useState('');
+	const [dokployApiKey, setDokployApiKey] = useState('');
 
 	useEffect(() => {
 		let cancelled = false;
@@ -148,6 +155,14 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 				const mcpConfig = await fs.readJSON(path.join(sourceClaudeDir, 'mcp-config.json'));
 				const userMcpConfig = path.join(claudeUserDir, '.mcp.json');
 
+				// Update Dokploy credentials if provided
+				if (dokployUrl || dokployApiKey) {
+					if (mcpConfig.mcpServers.dokploy) {
+						mcpConfig.mcpServers.dokploy.env.DOKPLOY_URL = dokployUrl;
+						mcpConfig.mcpServers.dokploy.env.DOKPLOY_API_KEY = dokployApiKey;
+					}
+				}
+
 				// Merge with existing config if it exists
 				let finalMcpConfig = mcpConfig;
 				if (await fs.pathExists(userMcpConfig)) {
@@ -190,6 +205,65 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 		};
 	}, []);
 
+	// Credential collection phase
+	if (status === 'credentials') {
+		return (
+			<Box flexDirection="column" padding={1}>
+				<BigText text="RAPIDS" colors={['cyan', 'magenta']} />
+				<Newline />
+				<Text bold color="cyan">
+					🔐 Dokploy MCP Configuration
+				</Text>
+				<Newline />
+				<Box flexDirection="column" borderStyle="round" borderColor="cyan" padding={1}>
+					<Text dimColor>
+						RAPIDS includes the Dokploy MCP server for deployment management.
+					</Text>
+					<Text dimColor>
+						You can configure it now or skip and add credentials later to ~/.claude/.mcp.json
+					</Text>
+				</Box>
+				<Newline />
+				{credentialPhase === 'url' && (
+					<Box flexDirection="column">
+						<Text bold>
+							Enter your Dokploy API URL (e.g., https://your-server.com/api):
+						</Text>
+						<Text dimColor>Press Enter to skip</Text>
+						<Box marginTop={1}>
+							<Text color="cyan">▶ </Text>
+							<TextInput
+								value={dokployUrl}
+								onChange={setDokployUrl}
+								onSubmit={() => setCredentialPhase('apikey')}
+							/>
+						</Box>
+					</Box>
+				)}
+				{credentialPhase === 'apikey' && (
+					<Box flexDirection="column">
+						<Text bold>
+							Enter your Dokploy API Key:
+						</Text>
+						<Text dimColor>Press Enter to skip</Text>
+						<Box marginTop={1}>
+							<Text color="cyan">▶ </Text>
+							<TextInput
+								value={dokployApiKey}
+								onChange={setDokployApiKey}
+								onSubmit={() => {
+									setCredentialPhase('done');
+									setStatus('installing');
+								}}
+								mask="*"
+							/>
+						</Box>
+					</Box>
+				)}
+			</Box>
+		);
+	}
+
 	if (status === 'error') {
 		return (
 			<Box flexDirection="column" padding={1}>
@@ -221,7 +295,7 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 					<Text>
 						✅ {stats.agents} Autonomous Sub-Agents (including Marketing Strategist)
 					</Text>
-					<Text>✅ {installedMCPs.length}/5 MCP Servers Ready</Text>
+					<Text>✅ {installedMCPs.length}/6 MCP Servers Ready</Text>
 					<Text>
 						{'   '}
 						{installedMCPs.map(name => `• ${name}`).join('  ')}
@@ -279,7 +353,7 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 							<Text color={idx === currentStep ? 'cyan' : idx < currentStep ? 'green' : 'gray'}>
 								{s.name}
 								{idx === currentStep && s.id === 'mcps' && installedMCPs.length > 0 && (
-									<Text dimColor> ({installedMCPs.length}/5)</Text>
+									<Text dimColor> ({installedMCPs.length}/6)</Text>
 								)}
 							</Text>
 						</Text>
