@@ -47,7 +47,7 @@ AI agents that work in parallel (up to 3 simultaneously):
 - **DB Architect** - Database schema management
 - **Security Scanner** - Security audits
 - **Deployment Manager** - Automated deployments
-- **Design Master** - Material Design 3 expert for beautiful, accessible UIs
+- **Design Master** - Material Design 3 expert for UNIQUE, brand-specific UIs (not generic templates)
 
 **💰 THE MOST CRITICAL AGENT:**
 - **Marketing Strategist** - Revenue generation, user acquisition, GTM strategy, copywriting, pricing, growth hacking
@@ -103,9 +103,9 @@ All 11 agents are globally available:
 **Launch Design Agent:**
 ```
 Launch design-master agent to:
-- Create Material Design 3 color scheme from brand color #6442d6
-- Design accessible navigation (bottom nav, rail, drawer)
-- Generate responsive layouts with proper breakpoints
+- Create UNIQUE Material Design 3 color scheme with custom personality
+- Design distinctive navigation with signature interactions
+- Generate creative layouts that stand out while staying accessible
 ```
 
 **Launch Marketing Agent:**
@@ -125,7 +125,7 @@ Launch marketing-strategist agent to:
 **Launch Parallel Agents:**
 ```
 Launch design-master + feature-builder + marketing-strategist in parallel to:
-- Design the UI (Material Design 3)
+- Design UNIQUE, brand-specific UI (Material Design 3)
 - Build the feature implementation
 - Plan the feature launch campaign
 ```
