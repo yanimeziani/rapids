@@ -19,7 +19,8 @@ async function buildCLI() {
     'cli/install.tsx',
     'cli/init.tsx',
     'cli/update.tsx',
-    'cli/migrate.tsx'
+    'cli/migrate.tsx',
+    'cli/clean.tsx'
   ];
 
   for (const entry of entryPoints) {

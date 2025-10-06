@@ -5,7 +5,8 @@
   "type": "module",
   "bin": {
     "rapids": "./dist/install.js",
-    "rapids-migrate": "./dist/migrate.js"
+    "rapids-migrate": "./dist/migrate.js",
+    "rapids-clean": "./dist/clean.js"
   },
   "scripts": {
     "test": "echo 'Tests coming soon' && exit 0"
