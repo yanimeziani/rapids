@@ -229,11 +229,12 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 					}
 				}
 
-				// Merge with existing config if it exists
+				// Merge with existing config if it exists, preserving ALL existing fields
 				let finalMcpConfig = mcpConfig;
 				if (await fs.pathExists(userMcpConfig)) {
 					const existingConfig = await fs.readJSON(userMcpConfig);
 					finalMcpConfig = {
+						...existingConfig, // Preserve ALL existing fields (account metadata, etc.)
 						mcpServers: {
 							...existingConfig.mcpServers,
 							...mcpConfig.mcpServers
