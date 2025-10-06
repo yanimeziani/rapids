@@ -9,6 +9,7 @@ import HomeIcon from '@mui/icons-material/Home';
 const navItems = [
   { title: 'Getting Started', href: '/docs/getting-started' },
   { title: 'Migration Guide', href: '/docs/migration' },
+  { title: 'Cleanup Guide', href: '/docs/cleanup' },
   { title: 'AI Agents', href: '/docs/agents' },
   { title: 'MCP Servers', href: '/docs/mcp' },
   { title: 'Token Optimization', href: '/docs/token-optimization' },
