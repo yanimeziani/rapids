@@ -82,10 +82,11 @@ The package has three main CLI commands built with Ink (React for terminals):
 **Linux**: `~/.config/claude/` → `~/.claude/`
 
 Files installed globally:
-- `~/.claude/agents/*.md` - 10 agent definitions
-- `~/.claude/commands/*.md` - 6 slash commands
-- `~/.claude/prompts/*.md` - 3 stack templates
+- `~/.claude/agents/*.md` - 11 agent definitions
+- `~/.claude/commands/*.md` - Slash commands (including `/update-doc`)
+- `~/.claude/prompts/*.md` - Stack templates
 - `~/.claude/output-styles/*.md` - 2 output styles
+- `~/.claude/.agent/` - Context optimization system (see below)
 - `~/.claude/mcp-config.json` - MCP server configuration
 
 ### Project Configuration Files
@@ -96,6 +97,48 @@ Located in `.claude/` directory:
 - `STACK_CONFIG.json` - Stack requirements and Docker specifications
 - `settings.local.json` - Project-specific stack configuration
 - `mcp-config.json` - MCP server setup (Context7, Filesystem, PostgreSQL, GitHub, Puppeteer)
+
+### Context Optimization System (`.agent/`)
+
+**Purpose:** Reduce token usage by 60-80% through structured documentation instead of full codebase analysis.
+
+**Structure:**
+```
+~/.claude/.agent/
+├── readme.md              # Documentation index (read this first!)
+├── task/                  # Implementation plans & PRDs
+│   ├── template-feature-plan.md
+│   └── archive/          # Completed plans
+├── system/               # Architecture documentation
+│   ├── architecture-overview.md
+│   ├── database-schema.md
+│   ├── api-endpoints.md
+│   ├── critical-paths.md
+│   └── stack-decisions.md
+└── sop/                  # Standard Operating Procedures
+    └── template-sop.md
+```
+
+**Workflow:**
+1. **Before implementing** → Run `/update-doc plan <feature-name>` to create structured plan
+2. **During implementation** → Read only relevant `.agent/` docs (not entire codebase)
+3. **After implementation** → Update docs with `/update-doc system` if architecture changed
+4. **When fixing issues** → Create SOP with `/update-doc sop <issue-description>`
+5. **Context switching** → Clear thread, rely on `.agent/` docs for context
+
+**Commands:**
+- `/update-doc initialize` - Set up `.agent/` folder structure
+- `/update-doc plan <feature-name>` - Create feature implementation plan
+- `/update-doc system` - Update architecture, DB, API docs
+- `/update-doc sop <description>` - Create Standard Operating Procedure
+- `/update-doc index` - Refresh documentation index
+- `/update-doc archive <plan>` - Move completed plan to archive
+
+**Key Benefits:**
+- **Token Savings:** 60-80% reduction vs full codebase reads
+- **Faster Context Loading:** Read only what's needed
+- **Scalable:** Grows with project without bloating context
+- **Sub-Agent Isolation:** Research tasks in separate threads, return summaries only
 
 ### The 11 Agents
 
@@ -123,27 +166,40 @@ Four code generation templates in `.claude/prompts/`:
 
 ## Token Optimization Strategy
 
-RAPIDS is designed for minimal token usage:
+RAPIDS is designed for minimal token usage through the `.agent/` documentation system:
 
-### Read Priority (Read ONLY when needed)
+### Primary Strategy: Use `.agent/` Docs Instead of Code
+**ALWAYS prefer reading `.agent/` documentation over reading source code:**
+
+1. **Start with** `.agent/readme.md` - Documentation index
+2. **For features** - Read `.agent/task/<feature>-plan.md` instead of full codebase
+3. **For architecture** - Read `.agent/system/architecture-overview.md` instead of scanning files
+4. **For DB work** - Read `.agent/system/database-schema.md` instead of migrations
+5. **For APIs** - Read `.agent/system/api-endpoints.md` instead of route files
+6. **For issues** - Check `.agent/sop/` for existing solutions
+
+**Token Savings: 60-80%** by reading concise docs instead of full source code.
+
+### Read Priority (Read source code ONLY when `.agent/` docs don't have the info)
 1. **Build/Dev Tasks**: `package.json`, `scripts/build.js`
 2. **CLI Development**: `cli/install.tsx`, `cli/init.tsx`, `cli/update.tsx`
-3. **Agent Configuration**: `.claude/subagents-config.json`
-4. **Stack Config**: `.claude/STACK_CONFIG.json`
-5. **Documentation**: Only when explicitly requested
+3. **Specific Implementation Details**: Only after checking `.agent/system/critical-paths.md`
 
 ### NEVER Read
 - `node_modules/` (always excluded)
 - `.git/` (version control)
 - `dist/` (build output)
-- Documentation unless requested
+- Entire codebase for context (use `.agent/` docs instead)
+- Documentation unless explicitly requested by user
 - Files listed in `.claudeignore`
 
 ### Best Practices
-- Read files only when directly relevant to the task
+- **Always check `.agent/readme.md` first** before reading any source files
+- Use **sub-agents** for token-heavy research (returns summaries only)
+- Read files only when `.agent/` docs are missing specific details
 - Use Grep/Glob for searching instead of reading multiple files
-- Batch operations to minimize tool calls
-- User should specify which files need modification
+- After major changes, run `/update-doc system` to keep docs fresh
+- Clear conversation thread when switching features (rely on `.agent/` docs for context)
 
 ## Deployment Requirements
 

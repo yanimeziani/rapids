@@ -194,6 +194,15 @@ ${agentData.triggers.map(t => `- ${t}`).join('\n')}
 				await fs.copy(path.join(sourceClaudeDir, 'subagents-config.json'), path.join(claudeUserDir, 'rapids-subagents-config.json'));
 				await fs.copy(path.join(sourceClaudeDir, 'STACK_CONFIG.json'), path.join(claudeUserDir, 'rapids-STACK_CONFIG.json'));
 
+				// Install .agent/ context optimization system to ~/.claude/.agent/
+				const agentDocsDir = path.join(claudeUserDir, '.agent');
+				const sourceAgentDocsDir = path.join(sourceDir, '.agent');
+				if (await fs.pathExists(sourceAgentDocsDir)) {
+					await fs.copy(sourceAgentDocsDir, agentDocsDir, {
+						overwrite: false // Preserve user customizations
+					});
+				}
+
 				// Count installed items
 				const commands = await fs.readdir(commandsDir);
 				const templates = await fs.readdir(promptsDir);
