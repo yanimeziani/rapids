@@ -9,6 +9,39 @@ import DescriptionIcon from '@mui/icons-material/Description';
 export default function ChangelogPage() {
   const versions = [
     {
+      version: 'v4.0.0-beta.1',
+      date: '2025-10-06',
+      title: 'Complete TypeScript Rewrite',
+      features: [
+        'Complete TypeScript rewrite with src/ architecture',
+        'rapids config - Interactive configuration editor',
+        'rapids agent <name> - Direct agent invocation',
+        'rapids template <type> <name> - Code generation from templates',
+        'rapids doctor - Fully functional health checker',
+        'Modular design: cli/, core/, types/, utils/',
+        'Dual build system (legacy + modern)',
+        'Comprehensive type definitions',
+        'Singleton pattern for config management',
+      ],
+      docs: [
+        'Revolutionary README.md with ASCII art branding',
+        'Open source ready: MIT License, CONTRIBUTING.md',
+        'Updated all documentation for v4.0.0',
+        'Complete API documentation',
+      ],
+      config: [
+        'Package.json updated to 4.0.0-beta.1',
+        'New bin entries: rapids, rapids-doctor',
+        'Enhanced build system with esbuild',
+        'TypeScript strict mode enabled',
+      ],
+      breaking: [
+        'Requires Node 20+',
+        'New command structure (rapids <command> instead of rapids-<command>)',
+        'Configuration reorganization',
+      ],
+    },
+    {
       version: 'v3.9.3',
       date: '2025-10-06',
       title: 'Rapids Clean Feature',
@@ -247,6 +280,24 @@ export default function ChangelogPage() {
                   {v.infrastructure.map((infra, i) => (
                     <Typography key={i} variant="body2" sx={{ color: 'text.secondary' }}>
                       • {infra}
+                    </Typography>
+                  ))}
+                </Stack>
+              </Box>
+            )}
+
+            {v.breaking && (
+              <Box sx={{ mb: 2 }}>
+                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
+                  <BugReportIcon sx={{ color: '#FF6B9D', fontSize: 20 }} />
+                  <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                    Breaking Changes
+                  </Typography>
+                </Stack>
+                <Stack spacing={0.5} sx={{ pl: 3 }}>
+                  {v.breaking.map((breaking, i) => (
+                    <Typography key={i} variant="body2" sx={{ color: 'text.secondary' }}>
+                      • {breaking}
                     </Typography>
                   ))}
                 </Stack>

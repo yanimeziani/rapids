@@ -45,7 +45,7 @@ export default function GettingStartedPage() {
                 borderRadius: 1,
               }}
             >
-              npm install -g rapids-ai
+              npm install -g rapids-ai@beta
             </Typography>
           </Paper>
           <Alert
