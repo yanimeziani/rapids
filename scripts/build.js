@@ -128,8 +128,11 @@ async function buildCLI() {
           js: '#!/usr/bin/env node'
         },
         loader: {
-          '.ts': 'ts'
-        }
+          '.ts': 'tsx',
+          '.tsx': 'tsx'
+        },
+        jsx: 'automatic',
+        jsxImportSource: 'react'
       });
 
       await fs.chmod(join(root, 'dist', 'rapids.js'), 0o755);

@@ -12,9 +12,18 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Read package.json for version
-const packageJson = JSON.parse(
-  readFileSync(join(__dirname, '../../package.json'), 'utf-8')
-);
+let packageJson;
+try {
+  // Try from dist directory (built)
+  packageJson = JSON.parse(
+    readFileSync(join(__dirname, '../package.json'), 'utf-8')
+  );
+} catch {
+  // Try from src directory (development)
+  packageJson = JSON.parse(
+    readFileSync(join(__dirname, '../../package.json'), 'utf-8')
+  );
+}
 
 const program = new Command();
 
@@ -50,11 +59,11 @@ program
   });
 
 program
-  .command('template [name]')
+  .command('template [type] [name]')
   .description('Generate code from template')
-  .action(async (name) => {
+  .action(async (type, name) => {
     const { templateCommand } = await import('./commands/template.js');
-    await templateCommand(name);
+    await templateCommand(type, name);
   });
 
 program.parse(process.argv);
