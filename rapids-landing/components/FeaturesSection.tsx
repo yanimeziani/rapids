@@ -25,8 +25,8 @@ const features = [
   },
   {
     icon: CloudIcon,
-    title: '6 MCP Servers',
-    description: 'Context7, Filesystem, PostgreSQL, GitHub, Puppeteer, Dokploy integration.',
+    title: '7 MCP Servers',
+    description: 'Context7, Filesystem, PostgreSQL, GitHub, Puppeteer, Neon, Dokploy.',
     color: '#6B5B95',
   },
   {

@@ -76,7 +76,7 @@ export default function HeroSection() {
           >
             <Chip
               icon={<RocketLaunchIcon />}
-              label="RAPIDS v3.9.3 - Now with rapids-clean"
+              label="RAPIDS v4.0.0-beta.1 - Complete TypeScript Rewrite"
               sx={{
                 backgroundColor: 'rgba(255, 107, 157, 0.15)',
                 border: '1px solid rgba(255, 107, 157, 0.3)',
@@ -121,8 +121,8 @@ export default function HeroSection() {
               lineHeight: 1.6,
             }}
           >
-            Portable Claude Code framework with <strong style={{ color: '#FF6B9D' }}>11 AI agents</strong>, <strong style={{ color: '#FF6B9D' }}>6 MCPs</strong>, and revenue-first workflows.
-            Token-optimized for solo developers.
+            Portable Claude Code framework with <strong style={{ color: '#FF6B9D' }}>11 AI agents</strong>, <strong style={{ color: '#FF6B9D' }}>7 MCPs</strong>, and revenue-first workflows.
+            <strong>Minimalist. Polyvalent. Efficient.</strong>
           </MotionTypography>
 
           {/* Stats */}
@@ -159,7 +159,7 @@ export default function HeroSection() {
               </Box>
               <Box>
                 <Typography variant="h3" sx={{ color: '#FF6B9D', fontWeight: 800 }}>
-                  6
+                  7
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                   MCP Servers
@@ -245,7 +245,7 @@ export default function HeroSection() {
                 fontSize: '1.1rem',
               }}
             >
-              npm install -g rapids-ai
+              npm install -g rapids-ai@beta
             </Typography>
           </MotionBox>
         </Stack>
